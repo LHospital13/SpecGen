@@ -1,0 +1,7 @@
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Recieved id 4
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Java version is Sun Microsystems Inc.:1.6.0_45
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Recieved vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Loading file map
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Loading guard files
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Starting Simplify
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Loading background predicate from /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax

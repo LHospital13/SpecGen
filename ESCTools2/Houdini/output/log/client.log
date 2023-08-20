@@ -1,0 +1,40 @@
+[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] trying to connect (retry = 0)[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)
+
+
+[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)
+
+[Thu Aug 10 02:46:52 CST 2023] [worker id=-1] trying to connect (retry = 0)
+[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed
+
+[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed
+[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] trying to connect (retry = 0)[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed
+
+
+[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed
+
+
+[Thu Aug 10 02:46:53 CST 2023] [worker id=-1] failed
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=-1] trying to connect (retry = 1)
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=2] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=5] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=2] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=5] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=6] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=6] got vcdir
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] got id
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] got vcdir

@@ -1,0 +1,12 @@
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Recieved id 3
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Java version is Sun Microsystems Inc.:1.6.0_45
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Recieved vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Loading file map
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Loading guard files
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Starting Simplify
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Loading background predicate from /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Adding to refuted list: 
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Proving file 0.2.41.method.sx
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Loading class predicates from 0.1.13.class.sx
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Done with class pred
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Done with 0.2.41.method.sx

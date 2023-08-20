@@ -1,0 +1,18 @@
+*Class*
+Absolute@0.1.13
+
+(BG_PUSH (AND 
+(FORALL (t) (PATS (<: |T_java.lang.Object| t)) (IFF (<: |T_java.lang.Object| t) (OR (EQ t |T_java.lang.Object|)  )))
+(<: |T_java.lang.Throwable| |T_java.lang.Object|)
+(EQ |T_java.lang.Throwable| (asChild |T_java.lang.Throwable| |T_java.lang.Object|))
+(<: |T_java.lang.Throwable| |T_java.io.Serializable|)
+(FORALL (t) (PATS (<: |T_java.lang.Throwable| t)) (IFF (<: |T_java.lang.Throwable| t) (OR (EQ t |T_java.lang.Throwable|) (<: |T_java.lang.Object| t) (<: |T_java.io.Serializable| t)  )))
+(<: |T_java.io.Serializable| |T_java.lang.Object|)
+(FORALL (t) (PATS (<: |T_java.io.Serializable| t)) (IFF (<: |T_java.io.Serializable| t) (OR (EQ t |T_java.io.Serializable|) (EQ t |T_java.lang.Object|)  )))
+(<: |T_java.lang.Exception| |T_java.lang.Throwable|)
+(EQ |T_java.lang.Exception| (asChild |T_java.lang.Exception| |T_java.lang.Throwable|))
+(FORALL (t) (PATS (<: |T_java.lang.Exception| t)) (IFF (<: |T_java.lang.Exception| t) (OR (EQ t |T_java.lang.Exception|) (<: |T_java.lang.Throwable| t)  )))
+(<: T_Absolute |T_java.lang.Object|)
+(EQ T_Absolute (asChild T_Absolute |T_java.lang.Object|))
+(FORALL (t) (PATS (<: T_Absolute t)) (IFF (<: T_Absolute t) (OR (EQ t T_Absolute) (<: |T_java.lang.Object| t)  )))
+(DISTINCT arrayType |T_boolean| |T_char| |T_byte| |T_short| |T_int| |T_long| |T_float| |T_double| |T_void| |T_.TYPE| |T_java.lang.Object| |T_java.lang.Throwable| |T_java.io.Serializable| |T_java.lang.Exception| T_Absolute)))

@@ -1,0 +1,21 @@
+Calling: /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/escj -classpath .::/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. -nowarn Null -nowarn ZeroDiv -nowarn ArrayStore -nowarn Cast -nowarn CLeak -nowarn IndexNegative -nowarn IndexTooBig -nowarn ILeak -nowarn Deadlock -nowarn ModExt -nowarn Modifies -nowarn NegSize -nowarn Unenforcable -nowarn Exception -nowarn Writable -verboseTrace -vclimit 2000000 -excuseNullInitializers -noPeepOptGCAssertFalse -loopFallThru -assertContinue -strongAssertPostNever -guardedVC /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -f /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/progIndirectFiles
+/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/../Escjava/release/master/bin/Simplify-1.5.4.linux
+ESC/Java version ESCJava-CURRENT
+    [0.03 s 19314648 bytes]
+
+Absolute ...
+  Prover started:0.015 s 22252776 bytes
+    [0.431 s 22488456 bytes]
+
+Absolute: Absolute() ...
+    [0.05 s 23184016 bytes]  guarded VC generation finished
+
+Absolute: Absolute(short) ...
+    [0.031 s 23544552 bytes]  guarded VC generation finished
+
+Absolute: Absolute(int) ...
+    [0.03 s 24060984 bytes]  guarded VC generation finished
+
+Absolute: Absolute(long) ...
+    [0.043 s 24405160 bytes]  guarded VC generation finished
+  [0.591 s 24405160 bytes total]

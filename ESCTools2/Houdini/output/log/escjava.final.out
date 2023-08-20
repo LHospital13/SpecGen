@@ -1,0 +1,21 @@
+
+/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/../Escjava/release/master/bin/Simplify-1.5.4.linux
+ESC/Java version ESCJava-CURRENT
+    [0.28 s 19236464 bytes]
+
+Absolute ...
+  Prover started:0.068 s 22237736 bytes
+    [2.285 s 22409056 bytes]
+
+Absolute: Absolute() ...
+    [0.274 s 23094728 bytes]  passed
+
+Absolute: Absolute(short) ...
+    [0.172 s 23437184 bytes]  passed
+
+Absolute: Absolute(int) ...
+    [0.175 s 23779712 bytes]  passed
+
+Absolute: Absolute(long) ...
+    [0.171 s 24122240 bytes]  passed
+  [3.103 s 24122240 bytes total]

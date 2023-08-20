@@ -1,0 +1,68 @@
+##########################################################
+Houdini version 3, April 2001
+Thu 10 Aug 2023 02:46:45 AM CST: Start
+Command-line arguments: -outdir ./output ./testcases/Absolute/Absolute.java
+The machine is: debian
+Environment variables: JAVAFE_ROOT=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe JAVA=java HOUDINI_ROOT=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini JAVA_PATH=/usr/jdk1.6.0_45/bin/
+Thu 10 Aug 2023 02:46:45 AM CST: Copying files...
+[outdir is /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original]
+./testcases/Absolute/Absolute.java: Caution: Using given file as the .java file, even though it is not the java file for Absolute on the classpath
+[copying source file ./testcases/Absolute/Absolute.java to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/Absolute.java]
+
+Absolute ...
+[making /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java]
+[making /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/Object.spec to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/Object.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/Exception.spec to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/Exception.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/Throwable.jml to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/Throwable.jml]
+[making /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/io]
+[generating spec file for java.io.Serializable as /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/io/Serializable.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/Class.jml to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/Class.jml]
+[making /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/reflect]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/reflect/GenericDeclaration.spec to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/reflect/GenericDeclaration.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/reflect/Type.spec to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/reflect/Type.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles/java/lang/reflect/AnnotatedElement.java to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/reflect/AnnotatedElement.java]
+[generating spec file for java.lang.CloneNotSupportedException as /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/CloneNotSupportedException.spec]
+[generating spec file for java.lang.Cloneable as /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/Cloneable.spec]
+[generating spec file for java.lang.InterruptedException as /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/InterruptedException.spec]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/IllegalArgumentException.jml to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/IllegalArgumentException.jml]
+[copying source file /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/../specs-java1.6/java/lang/RuntimeException.jml to /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-original/java/lang/RuntimeException.jml]
+
+java.lang.reflect.AnnotatedElement ...
+1 caution
+Thu 10 Aug 2023 02:46:46 AM CST: Create candidate annotation set...
+Thu 10 Aug 2023 02:46:48 AM CST: Running Escjava to generate VCs
+Calling: /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/escj -classpath .::/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. -nowarn Null -nowarn ZeroDiv -nowarn ArrayStore -nowarn Cast -nowarn CLeak -nowarn IndexNegative -nowarn IndexTooBig -nowarn ILeak -nowarn Deadlock -nowarn ModExt -nowarn Modifies -nowarn NegSize -nowarn Unenforcable -nowarn Exception -nowarn Writable -verboseTrace -vclimit 2000000 -excuseNullInitializers -noPeepOptGCAssertFalse -loopFallThru -assertContinue -strongAssertPostNever -guardedVC /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -f /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/progIndirectFiles
+Thu 10 Aug 2023 02:46:49 AM CST: Extracting Houdini Annotations
+Full extractor output is piped to: /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/extractor.out
+Thu 10 Aug 2023 02:46:49 AM CST: Starting Clients
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniClient
+Calling: java -Xmx1000000000 -Dsimplify=/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/release/master/bin/Simplify-1.5.4.linux -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.HoudiniClient -port 9999 -host localhost -vcdir /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc -ubp /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/java/escjava/backpred/UnivBackPred.ax -logToFile
+Thu 10 Aug 2023 02:46:49 AM CST: Starting HoudiniServer
+Thu 10 Aug 2023 02:46:55 AM CST: Removing refuted annotations
+Full remover output is piped to: /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/remover.out
+Thu 10 Aug 2023 02:46:55 AM CST: Final escjava run
+Calling: java -classpath :/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. houdini.FinalESCRun -hosts /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/hosts -files /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/progIndirectFiles -command (echo "not rshing to %1." | cd /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/src-annotated; /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/escj  -classpath .::/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. 		-verboseTrace 	-vclimit 2000000 	-excuseNullInitializers -suggest %2 >> /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/escjava.final.out.%3)&
+[Thu Aug 10 02:46:57 CST 2023] reading hosts file
+[Thu Aug 10 02:46:57 CST 2023] making file lists
+[Thu Aug 10 02:46:57 CST 2023] generating script
+Calling: esc.final.script
+Thu 10 Aug 2023 02:47:04 AM CST: Generating /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/escjava.final.out
+Thu 10 Aug 2023 02:47:04 AM CST: Creating HTML output
+Calling: TOOL_CLASSPATH=:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. PATH_ARG= -classpath .::/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Houdini/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Escjava/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/classfiles:/home/max/Documents/JMLGPT/ESCTools2/Houdini/../Utils:. /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/java/tohtml/tool2html /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/escjava.final.out . ../html @ /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/log/progIndirectFiles
+./jhoudini: 608: ./jhoudini: /home/max/Documents/JMLGPT/ESCTools2/Houdini/../Javafe/java/tohtml/tool2html: not found
+Thu 10 Aug 2023 02:47:04 AM CST: Done

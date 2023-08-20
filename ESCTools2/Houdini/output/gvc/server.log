@@ -1,0 +1,134 @@
+[Thu Aug 10 02:46:53 CST 2023] Java version is Sun Microsystems Inc.:1.6.0_45
+[Thu Aug 10 02:46:53 CST 2023] Computing canon form for /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/0.155.14.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with canon form for 0.155.14.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing deps for 0.155.14.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with deps for 0.155.14.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing canon form for /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/0.102.13.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with canon form for 0.102.13.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing deps for 0.102.13.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with deps for 0.102.13.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing canon form for /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/0.49.15.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with canon form for 0.49.15.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing deps for 0.49.15.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with deps for 0.49.15.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing canon form for /home/max/Documents/JMLGPT/ESCTools2/Houdini/./output/gvc/0.2.41.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with canon form for 0.2.41.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Computing deps for 0.2.41.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Done with deps for 0.2.41.method.sx
+[Thu Aug 10 02:46:53 CST 2023] Writing deps to file
+[Thu Aug 10 02:46:53 CST 2023] Done
+[Thu Aug 10 02:46:53 CST 2023] Dependencies by HGuard
+ G_0.84.30: [0.102.13.method.sx]
+ G_0.89.30: [0.102.13.method.sx]
+ G_0.27.30: [0.49.15.method.sx]
+ G_0.134.30: [0.155.14.method.sx]
+ G_0.139.30: [0.155.14.method.sx]
+ G_0.42.30: [0.49.15.method.sx]
+ G_0.4.32: [0.49.15.method.sx]
+ G_0.78.30: [0.102.13.method.sx]
+ G_0.47.30: [0.49.15.method.sx]
+ G_0.154.30: [0.155.14.method.sx]
+ G_0.93.30: [0.102.13.method.sx]
+ G_0.31.30: [0.49.15.method.sx]
+ G_0.98.30: [0.102.13.method.sx]
+ G_0.36.30: [0.49.15.method.sx]
+ G_0.143.30: [0.155.14.method.sx]
+ G_0.148.30: [0.155.14.method.sx]
+ G_0.82.30: [0.102.13.method.sx]
+ G_0.87.30: [0.102.13.method.sx]
+ G_0.25.30: [0.49.15.method.sx]
+ G_0.132.30: [0.155.14.method.sx]
+ G_0.101.30: [0.102.13.method.sx]
+ G_0.137.30: [0.155.14.method.sx]
+ G_0.40.30: [0.49.15.method.sx]
+ G_0.2.34: [0.2.41.method.sx]
+ G_0.76.30: [0.102.13.method.sx]
+ G_0.45.30: [0.49.15.method.sx]
+ G_0.152.30: [0.155.14.method.sx]
+ G_0.91.30: [0.102.13.method.sx]
+ G_0.96.30: [0.102.13.method.sx]
+ G_0.34.30: [0.49.15.method.sx]
+ G_0.141.30: [0.155.14.method.sx]
+ G_0.110.32: [0.155.14.method.sx]
+ G_0.39.30: [0.49.15.method.sx]
+ G_0.146.30: [0.155.14.method.sx]
+ G_0.80.30: [0.102.13.method.sx]
+ G_0.85.30: [0.102.13.method.sx]
+ G_0.23.30: [0.49.15.method.sx]
+ G_0.130.30: [0.155.14.method.sx]
+ G_0.28.30: [0.49.15.method.sx]
+ G_0.135.30: [0.155.14.method.sx]
+ G_0.43.30: [0.49.15.method.sx]
+ G_0.150.30: [0.155.14.method.sx]
+ G_0.79.30: [0.102.13.method.sx]
+ G_0.48.30: [0.49.15.method.sx]
+ G_0.94.30: [0.102.13.method.sx]
+ G_0.129.30: [0.155.14.method.sx]
+ G_0.32.30: [0.49.15.method.sx]
+ G_0.99.30: [0.102.13.method.sx]
+ G_0.37.30: [0.49.15.method.sx]
+ G_0.144.30: [0.155.14.method.sx]
+ G_0.149.30: [0.155.14.method.sx]
+ G_0.83.30: [0.102.13.method.sx]
+ G_0.88.30: [0.102.13.method.sx]
+ G_0.57.32: [0.102.13.method.sx]
+ G_0.26.30: [0.49.15.method.sx]
+ G_0.133.30: [0.155.14.method.sx]
+ G_0.138.30: [0.155.14.method.sx]
+ G_0.41.30: [0.49.15.method.sx]
+ G_0.77.30: [0.102.13.method.sx]
+ G_0.46.30: [0.49.15.method.sx]
+ G_0.153.30: [0.155.14.method.sx]
+ G_0.92.30: [0.102.13.method.sx]
+ G_0.30.30: [0.49.15.method.sx]
+ G_0.97.30: [0.102.13.method.sx]
+ G_0.35.30: [0.49.15.method.sx]
+ G_0.142.30: [0.155.14.method.sx]
+ G_0.147.30: [0.155.14.method.sx]
+ G_0.81.30: [0.102.13.method.sx]
+ G_0.86.30: [0.102.13.method.sx]
+ G_0.24.30: [0.49.15.method.sx]
+ G_0.131.30: [0.155.14.method.sx]
+ G_0.100.30: [0.102.13.method.sx]
+ G_0.29.30: [0.49.15.method.sx]
+ G_0.136.30: [0.155.14.method.sx]
+ G_0.44.30: [0.49.15.method.sx]
+ G_0.151.30: [0.155.14.method.sx]
+ G_0.90.30: [0.102.13.method.sx]
+ G_0.95.30: [0.102.13.method.sx]
+ G_0.33.30: [0.49.15.method.sx]
+ G_0.140.30: [0.155.14.method.sx]
+ G_4.49.15: [0.2.41.method.sx]
+ G_0.38.30: [0.49.15.method.sx]
+ G_0.145.30: [0.155.14.method.sx]
+
+Dependencies by File
+ 0.155.14.method.sx: 27    assumes=[G_0.129.30, G_0.130.30, G_0.131.30, G_0.132.30, G_0.133.30, G_0.134.30, G_0.135.30, G_0.136.30, G_0.137.30, G_0.138.30, G_0.139.30, G_0.140.30, G_0.141.30, G_0.142.30, G_0.143.30, G_0.144.30, G_0.145.30, G_0.146.30, G_0.147.30, G_0.148.30, G_0.149.30, G_0.150.30, G_0.151.30, G_0.152.30, G_0.154.30, G_0.110.32] asserts=[G_0.153.30]
+ 0.2.41.method.sx: 3    assumes=[G_0.2.34] asserts=[G_0.2.34, G_4.49.15]
+ 0.102.13.method.sx: 27    assumes=[G_0.76.30, G_0.77.30, G_0.78.30, G_0.79.30, G_0.80.30, G_0.81.30, G_0.82.30, G_0.83.30, G_0.84.30, G_0.85.30, G_0.86.30, G_0.87.30, G_0.88.30, G_0.89.30, G_0.90.30, G_0.91.30, G_0.92.30, G_0.93.30, G_0.94.30, G_0.95.30, G_0.96.30, G_0.97.30, G_0.98.30, G_0.99.30, G_0.101.30, G_0.57.32] asserts=[G_0.100.30]
+ 0.49.15.method.sx: 27    assumes=[G_0.23.30, G_0.24.30, G_0.25.30, G_0.26.30, G_0.27.30, G_0.28.30, G_0.29.30, G_0.30.30, G_0.31.30, G_0.32.30, G_0.33.30, G_0.34.30, G_0.35.30, G_0.36.30, G_0.37.30, G_0.38.30, G_0.39.30, G_0.40.30, G_0.41.30, G_0.42.30, G_0.43.30, G_0.44.30, G_0.45.30, G_0.46.30, G_0.48.30, G_0.4.32] asserts=[G_0.47.30]
+
+[Thu Aug 10 02:46:53 CST 2023] Running for 3 sec.
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=2] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=4] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=5] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=6] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] Creating worker from computer debian
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] Farming out [Job [0.2.41]]
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] Farming out [Job [0.49.15]]
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] Farming out [Job [0.102.13]]
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] Farming out [Job [0.155.14]]
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] proved [Job [0.102.13]] in 2, 3, 171, 1, 1, 53, 69
+[Thu Aug 10 02:46:54 CST 2023] [worker id=1] completed [Job [0.102.13]] in 301 ms.
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] proved [Job [0.49.15]] in 1, 7, 146, 1, 1, 106, 40
+[Thu Aug 10 02:46:54 CST 2023] [worker id=0] completed [Job [0.49.15]] in 302 ms.
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] proved [Job [0.155.14]] in 1, 3, 155, 1, 45, 55, 43
+[Thu Aug 10 02:46:54 CST 2023] [worker id=7] completed [Job [0.155.14]] in 303 ms.
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] proved [Job [0.2.41]] in 11, 0, 31, 1, 0, 131, 130
+[Thu Aug 10 02:46:54 CST 2023] [worker id=3] completed [Job [0.2.41]] in 305 ms.
+[Thu Aug 10 02:46:54 CST 2023] Running for 4 sec.
+[Thu Aug 10 02:46:54 CST 2023] End time is Thu Aug 10 02:46:54 CST 2023
+[Thu Aug 10 02:46:54 CST 2023] Elapsed time is 0 hour. 0 min. 4 sec.

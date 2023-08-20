@@ -1,0 +1,8 @@
+public class Add {
+	//@ requires x + y <= Integer.MAX_VALUE;
+	//@ requires Integer.MIN_VALUE <= x + y;
+	//@ ensures \result == x + y;
+	public int Add(int x, int y) {
+		return x + y;
+	}
+}
