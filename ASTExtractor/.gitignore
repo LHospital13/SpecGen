@@ -1,0 +1,10 @@
+bin/
+dist/
+target/
+.project
+.classpath
+.settings
+*.class
+.pydevproject
+__pycache__
+*.pyc

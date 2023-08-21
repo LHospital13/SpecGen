@@ -1,0 +1,8 @@
+*.log
+*.class
+__pycache__/
+openjml/
+*.txt
+tmp/*.java
+tmp/houdini_output/
+
