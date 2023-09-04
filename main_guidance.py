@@ -61,6 +61,7 @@ def main():
     current_time_str = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime(time.time()))
     f_log = open(os.path.abspath(".") + "/logs/log-{name}-{time_str}.txt".format(name=classname, time_str=current_time_str), "w")
 
+    # Candidate Generation Phase
     config = {}
     current_code = input_code
     err_info = ""
@@ -114,6 +115,9 @@ def main():
         f_log.write(err_info + "\n")
         if err_info == "":
             break
+
+    # Mutation Phase
+    
     
     f_log.close()
 

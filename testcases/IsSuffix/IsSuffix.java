@@ -1,8 +1,9 @@
 public class IsSuffix {
 
     public boolean isSuffix (String pat, String txt) {
-        int i = pat.length();
-        int j = txt.length();
+	
+        int i = pat.length() - 1;
+        int j = txt.length() - 1;
 
         while(i >= 0) {
             if(j < 0 || pat.charAt(i) != txt.charAt(i))

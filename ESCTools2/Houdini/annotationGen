@@ -391,6 +391,7 @@ if [ "${RESTART}" = "false" ]; then
   cat ${JDKSPEC_ROOT}/java/io/Serializable.refines-spec > ${OUTDIR}/src-original/java/io/Serializable.spec
   cat ${JDKSPEC_ROOT}/java/lang/reflect/GenericDeclaration.spec > ${OUTDIR}/src-original/java/lang/reflect/GenericDeclaration.spec
   cat ${JDKSPEC_ROOT}/java/lang/reflect/Type.spec > ${OUTDIR}/src-original/java/lang/reflect/Type.spec
+  cat ${JDKSPEC_ROOT}/java/lang/Appendable.spec > ${OUTDIR}/src-original/java/lang/Appendable.spec
   cat ${JDKSPEC_ROOT}/java/lang/Cloneable.refines-spec > ${OUTDIR}/src-original/java/lang/Cloneable.spec
   cat ${JDKSPEC_ROOT}/java/lang/CloneNotSupportedException.refines-spec > ${OUTDIR}/src-original/java/lang/CloneNotSupportedException.spec
   cat ${JDKSPEC_ROOT}/java/lang/InterruptedException.refines-spec > ${OUTDIR}/src-original/java/lang/InterruptedException.spec

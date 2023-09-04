@@ -5,9 +5,10 @@ class CheckABeforeB {
         while (i < chars.length && chars[i] == 'a') {
             i++;
         }
-        while (i < chars.length && chars[i] == 'b') {
-            i++;
+	int j = i;
+        while (j < chars.length && chars[j] == 'b') {
+            j++;
         }
-        return i == chars.length;
+        return j == chars.length;
     }
 }

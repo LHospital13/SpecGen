@@ -1,6 +1,6 @@
 class Merge {
     public void merge(int[] nums1, int[] nums2) {
-        int m = nums1.length, n = nums2.length
+        int m = nums1.length, n = nums2.length;
         int p1 = 0, p2 = 0;
         int[] sorted = new int[m + n];
         int cur;

@@ -1,10 +1,10 @@
 public class BubbleSort { 
     
     void swap(int x, int y,  int array[]) {
-	   int temp;     
-       temp = array[x];
-       array[x] = array[y];
-       array[y] = temp;
+        int temp;     
+        temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
     }
 
     int[] bubbleSort(int arr[]) {
@@ -14,10 +14,10 @@ public class BubbleSort {
 
             for (int j = 0; j < n-i-1; j++) {
                 if (arr[j+1] < arr[j]) {  
-		            swap(j, j + 1, arr); 
+		     swap(j, j + 1, arr); 
                 } 
-	        }
-	    } 
-	    return arr;
+	    }
+	} 
+	return arr;
     } 
 }

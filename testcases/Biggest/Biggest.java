@@ -7,7 +7,7 @@ public class Biggest {
         int biggest = 0;
 
         while (a.length - index > 0) {
-            if (a[index] > a[smallest]) {
+            if (a[index] > a[biggest]) {
                 biggest = index;
             }
             index = index + 1;

@@ -18,7 +18,6 @@ Please generate JML specifications for the Java program given below.
 ```
 {src_code}
 ```
-Note that you should try to generate loop invariant specifications for each loop in the program.
 """
 
 FORMAT_REFINEMENT_PROMPT = """

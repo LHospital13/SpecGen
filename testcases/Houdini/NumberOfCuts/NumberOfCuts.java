@@ -1,0 +1,19 @@
+class NumberOfCuts {
+    public int numberOfCuts(int n) {
+        if (n == 1) {
+            return 0;
+        }
+        if (n % 2 == 0) {
+            return n / 2;
+        }
+        return n;
+    }
+
+    void __HoudiniInvoker() {
+        numberOfCuts(0);
+        numberOfCuts(1);
+        numberOfCuts(2);
+        numberOfCuts(3);
+        numberOfCuts(8);
+    }
+}

@@ -33,6 +33,9 @@ def validate_openjml(code_with_spec, classname):
 
 def read_annotations_instr():
     annotations_path = os.path.abspath(".") + "/tmp/houdini_output/log/annotations.instr"
+    if not os.access(annotations_path, os.R_OK):
+        print("Error: Failed to generate candidate annotation set\n")
+        return []
     res_list = []
     with open(annotations_path, "r") as f:
         for line in f.readlines():
