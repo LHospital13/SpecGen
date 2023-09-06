@@ -34,11 +34,10 @@ def create_generation_prompt_config(input_code, class_name):
     }
     messages = [msg_base]
 
-    oracle_list = ["Absolute", "AddLoop", "BinarySearch", "BubbleSort", "Calculator",
-                   "CombinationPermutation", "CopyArray", "Factorial", "Fibonacci",
-                   "FIND_FIRST_IN_SORTED", "FindFirstZero", "FindInArray", "FIND_IN_SORTED", "GCD",
-                   "Inverse", "LCM", "LeapYear", "LinearSearch", "OddEven", "Perimeter",
-                   "PrimeCheck", "PrimeNumbers", "SetZero", "Smallest", "StrPalindrome", "TransposeMatrix"]
+    oracle_list = ["AddLoop", "BinarySearch", "BubbleSort", "CopyArray", "Factorial",
+                   "FIND_FIRST_IN_SORTED", "FindFirstZero",
+                   "Inverse", "LinearSearch", "OddEven", "Perimeter",
+                   "SetZero", "Smallest", "StrPalindrome", "TransposeMatrix"]
     
     prompt_list = randomly_select_prompt(oracle_list, 4, class_name)
     # prompt_list = manually_select_prompt()

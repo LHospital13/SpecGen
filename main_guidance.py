@@ -115,9 +115,6 @@ def main():
         f_log.write(err_info + "\n")
         if err_info == "":
             break
-
-    # Mutation Phase
-    
     
     f_log.close()
 
