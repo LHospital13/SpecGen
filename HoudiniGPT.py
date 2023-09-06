@@ -10,7 +10,7 @@ from util.token_counter import count_config_token
 
 from generation_prompt import create_generation_prompt_config
 from refinement_prompt import create_specialized_patcher_prompt_config, gen_extra_guidance, extract_err_type
-from myhoudini import extract_lineno_from_err_info
+from myhoudini import extract_lineno_from_err_info, extract_blank_prefix
 
 def token_limit_fitter(config, token_limit=4090):
     res = config
@@ -43,38 +43,41 @@ def validate_openjml_reduction(code_with_spec, classname):
         res = res + line
     return res
 
-def mutate_token_list(token_list, in_forall):
+def mutate_token_list(token_list, dont_mutate_logical):
     res_list = []
     token_variant_list = []
     if len(token_list) == 0:
         return [[""]]
     if token_list[0].find("\\forall") != -1 or token_list[0].find("\\exists") != -1:
-        in_forall = True
+        dont_mutate_logical = True
         tmp_str = token_list[0]
         token_variant_list.append(tmp_str.replace("forall", "exists"))
         token_variant_list.append(tmp_str.replace("exists", "forall"))
     #elif token_list[0] == "==" or token_list[0] == "!=":
     #    token_variant_list = ["!=", "=="]
     elif token_list[0] == "&&" or token_list[0] == "||":
-        if in_forall:
-            in_forall = False
+        if dont_mutate_logical:
+            dont_mutate_logical = False
             token_variant_list = [token_list[0]]
         else:
             token_variant_list = ["&&", "||"]
     elif token_list[0] == "<=":
-        token_variant_list = ["<=", "- 1 <="]
+        token_variant_list = ["<", "<=", "- 1 <=", "- 2 <=", "- 3 <="]
     elif token_list[0] == ">=":
-        token_variant_list = [">=", "+ 1 >="]
+        token_variant_list = [">", ">=", "+ 1 >=", "+ 2 >=", "+ 3 >="]
     elif token_list[0] == "<":
         token_variant_list = ["<", "<="]
     elif token_list[0] == ">":
         token_variant_list = [">", ">="]
     #elif token_list[0] == "+" or token_list[0] == "-":
     #    token_variant_list = ["+", "-"]
+    elif token_list[0].find("maintaining") != -1 or token_list[0].find("invariant") != -1:
+        dont_mutate_logical = True
+        token_variant_list = [token_list[0]]
     else:
         token_variant_list = [token_list[0]]
     for variant in token_variant_list:
-        for res in mutate_token_list(token_list[1:], in_forall):
+        for res in mutate_token_list(token_list[1:], dont_mutate_logical):
             tmp_list = [variant]
             tmp_list.extend(res)
             res_list.append(tmp_list)
@@ -89,6 +92,9 @@ def spec_mutator(line):
             tmp_str = tmp_str + token + " "
         res_list.append(tmp_str)
     return res_list
+
+def is_invariant_or_postcondition(line):
+    return line.find("@") != -1 and (line.find("invariant") != -1 or line.find("maintaining") != -1 or line.find("ensures") != -1)
 
 def config2str(config):
     res = ""
@@ -182,7 +188,44 @@ def main():
         f_log.write(err_info + "\n")
         if err_info == "" or done_flag:
             break
+    
+    # Mutation Phase
+    print("=============== Mutation Phase ===============")
+    current_code_list = current_code.split('\n')
+    mutated_spec_list = []
+    # Generate mutated spec set
+    for index in range(len(current_code_list)):
+        if is_invariant_or_postcondition(current_code_list[index]):
+            for mutated_spec in spec_mutator(current_code_list[index]):
+                mutated_spec_list.append({"content": mutated_spec, "index": index})
+    while True:
+        err_info = validate_openjml(current_code, classname)
+        print(err_info)
+        if err_info == "":
+            break
+        refuted_lineno_list = extract_lineno_from_err_info(err_info)
+        # replace each error spec with mutated spec
+        for lineno in refuted_lineno_list:
+            index = lineno - 1
+            if not is_invariant_or_postcondition(current_code_list[index]):
+                continue
+            # Find mutated spec with same lineno
+            found_flag = False
+            for item in mutated_spec_list:
+                if item["index"] == index:
+                    # replace error spec with mutated spec
+                    current_code_list[index] = item['content']
+                    mutated_spec_list.remove(item)
+                    found_flag = True
+                    break
+            if not found_flag:
+                current_code_list[index] = " "
+        current_code = ""
+        for line in current_code_list:
+            current_code = current_code + line + "\n"
+        print(current_code)
 
+    '''
     # Mutation Phase
     print("=============== Mutation of Invariants ===============")
     current_code_list = current_code.split('\n')
@@ -260,6 +303,7 @@ def main():
         print(current_code)
         if not flag:
             break
+    '''
     
     f_log.close()
 
