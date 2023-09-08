@@ -1,5 +1,5 @@
 class Merge {
-    public void merge(int[] nums1, int[] nums2) {
+    public static int[] merge(int[] nums1, int[] nums2) {
         int m = nums1.length, n = nums2.length;
         int p1 = 0, p2 = 0;
         int[] sorted = new int[m + n];
@@ -16,8 +16,6 @@ class Merge {
             }
             sorted[p1 + p2 - 1] = cur;
         }
-        for (int i = 0; i != m + n; ++i) {
-            nums1[i] = sorted[i];
-        }
+        return sorted;
     }
 }

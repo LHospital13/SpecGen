@@ -43,7 +43,7 @@ def validate_openjml_reduction(code_with_spec, classname):
         res = res + line
     return res
 
-def mutate_token_list(token_list, dont_mutate_logical):
+def mutate_token_list(token_list, has_forall, dont_mutate_logical):
     res_list = []
     token_variant_list = []
     if len(token_list) == 0:
@@ -57,10 +57,11 @@ def mutate_token_list(token_list, dont_mutate_logical):
     #    token_variant_list = ["!=", "=="]
     elif token_list[0] == "&&" or token_list[0] == "||":
         if dont_mutate_logical:
-            dont_mutate_logical = False
             token_variant_list = [token_list[0]]
         else:
             token_variant_list = ["&&", "||"]
+        if has_forall:
+            dont_mutate_logical = False
     elif token_list[0] == "<=":
         token_variant_list = ["<", "<=", "- 1 <=", "- 2 <=", "- 3 <="]
     elif token_list[0] == ">=":
@@ -71,13 +72,10 @@ def mutate_token_list(token_list, dont_mutate_logical):
         token_variant_list = [">", ">="]
     #elif token_list[0] == "+" or token_list[0] == "-":
     #    token_variant_list = ["+", "-"]
-    elif token_list[0].find("maintaining") != -1 or token_list[0].find("invariant") != -1:
-        dont_mutate_logical = True
-        token_variant_list = [token_list[0]]
     else:
         token_variant_list = [token_list[0]]
     for variant in token_variant_list:
-        for res in mutate_token_list(token_list[1:], dont_mutate_logical):
+        for res in mutate_token_list(token_list[1:], has_forall, dont_mutate_logical):
             tmp_list = [variant]
             tmp_list.extend(res)
             res_list.append(tmp_list)
@@ -85,7 +83,8 @@ def mutate_token_list(token_list, dont_mutate_logical):
 
 def spec_mutator(line):
     res_list = []
-    res_token_list_list = mutate_token_list(line.split(' '), False)
+    has_forall = (line.find("forall") != -1 or line.find("exists") != -1)
+    res_token_list_list = mutate_token_list(line.split(' '), has_forall, True)
     for token_list in res_token_list_list:
         tmp_str = ""
         for token in token_list:
@@ -94,7 +93,7 @@ def spec_mutator(line):
     return res_list
 
 def is_invariant_or_postcondition(line):
-    return line.find("@") != -1 and (line.find("invariant") != -1 or line.find("maintaining") != -1 or line.find("ensures") != -1)
+    return line.find("@") != -1 and (line.find("invariant") != -1 or line.find("maintaining") != -1 or line.find("ensures") != -1 or line.find("decreases") != -1 or line.find("increases") != -1)
 
 def config2str(config):
     res = ""
@@ -201,6 +200,7 @@ def main():
     while True:
         err_info = validate_openjml(current_code, classname)
         print(err_info)
+        f_log.write(err_info + "\n")
         if err_info == "":
             break
         refuted_lineno_list = extract_lineno_from_err_info(err_info)
@@ -224,6 +224,7 @@ def main():
         for line in current_code_list:
             current_code = current_code + line + "\n"
         print(current_code)
+        f_log.write(current_code + "\n")
 
     '''
     # Mutation Phase
