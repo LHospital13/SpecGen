@@ -1,7 +1,7 @@
 public class StrPalindrome {
-   private  String reverse = "";
    
    public boolean isPalindrome(String str) {
+      String reverse = "";
       
       int length = str.length();
 
@@ -12,4 +12,5 @@ public class StrPalindrome {
       
       return reverse.equals(str);
    }
+
 } 

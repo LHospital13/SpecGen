@@ -31,19 +31,7 @@ def validate_openjml(code_with_spec, classname):
         res = res + line
     return res
 
-def validate_openjml_reduction(code_with_spec, classname):
-    tmp_filename = os.path.abspath(".") + "/tmp/{filename}.java".format(filename=classname)
-    tmp_file = open(tmp_filename, 'w')
-    tmp_file.write(code_with_spec)
-    tmp_file.close()
-    cmd = os.path.abspath(".") + "/openjml/openjml --esc --arithmetic-failure=quiet --nonnull-by-default --quiet -nowarn " + tmp_filename
-    res_lines = os.popen(cmd).readlines()
-    res = ""
-    for line in res_lines:
-        res = res + line
-    return res
-
-def mutate_token_list(token_list, has_forall, dont_mutate_logical):
+def mutate_token_list_random(token_list, has_forall, dont_mutate_logical):
     res_list = []
     token_variant_list = []
     if len(token_list) == 0:
@@ -63,9 +51,9 @@ def mutate_token_list(token_list, has_forall, dont_mutate_logical):
         if has_forall:
             dont_mutate_logical = False
     elif token_list[0] == "<=":
-        token_variant_list = ["<", "<=", "- 1 <=", "- 2 <=", "- 3 <="]
+        token_variant_list = ["<", "<=", "- 1 <="]
     elif token_list[0] == ">=":
-        token_variant_list = [">", ">=", "+ 1 >=", "+ 2 >=", "+ 3 >="]
+        token_variant_list = [">", ">=", "+ 1 >="]
     elif token_list[0] == "<":
         token_variant_list = ["<", "<="]
     elif token_list[0] == ">":
@@ -75,22 +63,69 @@ def mutate_token_list(token_list, has_forall, dont_mutate_logical):
     else:
         token_variant_list = [token_list[0]]
     for variant in token_variant_list:
-        for res in mutate_token_list(token_list[1:], has_forall, dont_mutate_logical):
+        for res in mutate_token_list_random(token_list[1:], has_forall, dont_mutate_logical):
             tmp_list = [variant]
             tmp_list.extend(res)
             res_list.append(tmp_list)
     return res_list
 
-def spec_mutator(line):
+def spec_mutator_random(line):
     res_list = []
     has_forall = (line.find("forall") != -1 or line.find("exists") != -1)
-    res_token_list_list = mutate_token_list(line.split(' '), has_forall, True)
+    res_token_list_list = mutate_token_list_random(line.split(' '), has_forall, True)
     for token_list in res_token_list_list:
         tmp_str = ""
         for token in token_list:
             tmp_str = tmp_str + token + " "
         res_list.append(tmp_str)
     return res_list
+
+def mutate_token_list_prior(token_list, current_index):
+    res_list = []
+    token_variant_list = []
+    if current_index >= len(token_list):
+        return [[""]]
+    if token_list[current_index] == "<=":
+        token_variant_list = ["<", "<=", "- 1 <="]
+    elif token_list[current_index] == ">=":
+        token_variant_list = [">", ">=", "+ 1 >="]
+    elif token_list[current_index] == "<":
+        token_variant_list = ["<", "<="]
+    elif token_list[current_index] == ">":
+        token_variant_list = [">", ">="]
+    else:
+        token_variant_list = [token_list[current_index]]
+    for variant in token_variant_list:
+        for res in mutate_token_list_prior(token_list, current_index + 1):
+            tmp_list = [variant]
+            tmp_list.extend(res)
+            res_list.append(tmp_list)
+    return res_list
+
+def spec_mutator_heuristic(line):
+    res_list = []
+    has_forall = (line.find("forall") != -1 or line.find("exists") != -1)
+    token_list = line.split(' ')
+    res_token_list_list = mutate_token_list_prior(token_list, 0)
+    for token_list in res_token_list_list:
+        tmp_str = ""
+        for token in token_list:
+            tmp_str = tmp_str + token + " "
+        res_list.append(tmp_str)
+
+    res_list_random = spec_mutator_random(line)
+    res_list_random_filtered = []
+    for str1 in res_list_random:
+        flag = False
+        for str2 in res_list:
+            if str1 == str2:
+                flag = True
+                break
+        if not flag:
+            res_list_random_filtered.append(str1)
+    res_list.extend(res_list_random_filtered)
+    return res_list
+    
 
 def is_invariant_or_postcondition(line):
     return line.find("@") != -1 and (line.find("invariant") != -1 or line.find("maintaining") != -1 or line.find("ensures") != -1 or line.find("decreases") != -1 or line.find("increases") != -1)
@@ -195,7 +230,7 @@ def main():
     # Generate mutated spec set
     for index in range(len(current_code_list)):
         if is_invariant_or_postcondition(current_code_list[index]):
-            for mutated_spec in spec_mutator(current_code_list[index]):
+            for mutated_spec in spec_mutator_heuristic(current_code_list[index]):
                 mutated_spec_list.append({"content": mutated_spec, "index": index})
     while True:
         err_info = validate_openjml(current_code, classname)
