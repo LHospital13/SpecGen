@@ -43,6 +43,7 @@ def read_refine_as_msg(dirname):
 def extract_err_type(err_info):
     prompt_list = []
     keyword_dict = {
+        "DivideByZero": "divide_by_zero",
         "visibility": "private_visibility",
         "NegativeIndex": "negative_index",
         "TooLargeIndex": "too_large_index",

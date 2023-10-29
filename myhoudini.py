@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 def str2file(str_content, filename):
     with open(filename, "w") as f:
@@ -118,6 +119,9 @@ def extract_lineno_from_err_info(err_info):
     return lineno_list
 
 def myhoudini_algorithm(code, classname):
+    current_time_str = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime(time.time()))
+    f_log = open(os.path.abspath(".") + "/logs_myhoudini/log-{name}-{time_str}.txt".format(name=classname, time_str=current_time_str), "w")
+
     gen_annotation(code, classname)
     annotation_list = read_annotations_instr()
     merged_list = merge_annotation_into_code(annotation_list, code)
@@ -129,8 +133,10 @@ def myhoudini_algorithm(code, classname):
         for line in merged_list:
             merged_code = merged_code + line['content'] + '\n'
         print(merged_code)
+        f_log.write(merged_code + "\n")
         err_info = validate_openjml(merged_code, classname)
         print(err_info)
+        f_log.write(err_info + "\n")
         if err_info == "":
             break
         else:

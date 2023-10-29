@@ -128,9 +128,6 @@ def spec_mutator_heuristic(line):
 def is_invariant_or_postcondition(line):
     return line.find("@") != -1 and (line.find("invariant") != -1 or line.find("maintaining") != -1 or line.find("ensures") != -1 or line.find("decreases") != -1 or line.find("increases") != -1)
 
-def is_assert(line):
-    return line.find("@") != -1 and line.find("assert") != -1
-
 def config2str(config):
     res = ""
     for message in config["messages"]:
@@ -158,74 +155,12 @@ def main():
 
     openai.api_key = open(args.key_file, 'r').read().strip()
     input_code = file2str(args.input)
+    current_code = input_code
 
     current_time_str = time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime(time.time()))
     f_log = open(os.path.abspath(".") + "/logs/log-{name}-{time_str}.txt".format(name=classname, time_str=current_time_str), "w")
 
     num_verify = 0
-
-    # Candidate Generation Phase
-    print("=============== Generation Phase ===============")
-    done_flag = False
-    config = {}
-    current_code = input_code
-    err_info = ""
-    err_types = []
-    for i in range(1, args.max_iterations+1):
-        print("--------------- Iteration {num} ---------------".format(num=i))
-        if i == 1:
-            config = create_generation_prompt_config(input_code, classname)
-            print_config(config)
-            ret = request_chatgpt_engine(config)
-            print("assistant:", ret['choices'][0]['message']['content'])
-            current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
-            current_code = current_code.strip()
-            config['messages'].append(
-                {
-                    'role': 'assistant',
-                    'content': "```\n{code}\n```".format(code=current_code)
-                }
-            )
-        else:
-            err_types = extract_err_type(err_info)
-            if len(err_types) != 0:
-                tmp_config = create_specialized_patcher_prompt_config(current_code, err_info)
-                print_config(tmp_config)
-                ret = request_chatgpt_engine(tmp_config)
-                print("assistant:", ret['choices'][0]['message']['content'])
-                current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
-                current_code = current_code.strip()
-                config['messages'][-1]['content'] = "```\n{code}\n```".format(code=current_code)
-            elif err_info.find("LoopInvariant") == -1 and err_info.find("Postcondition") == -1:
-                refine_msg = {
-                    'role': 'user',
-                    'content': FORMAT_REFINE_PROMPT.format(err_info=err_info)
-                }
-                refine_msg['content'] += gen_extra_guidance(err_info)
-                config['messages'].append(refine_msg)
-                print_msg(refine_msg)
-                token_limit_fitter(config, 3000)
-                ret = request_chatgpt_engine(config)
-                print("assistant:", ret['choices'][0]['message']['content'])
-                current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
-                current_code = current_code.strip()
-                config['messages'].append(
-                    {
-                        'role': 'assistant',
-                        'content': "```\n{code}\n```".format(code=current_code)
-                    }
-                )
-            else:
-                done_flag = True
-                break
-        f_log.write(current_code + "\n")
-        err_info = validate_openjml(current_code, classname)
-        num_verify = num_verify + 1
-        print(err_info)
-        err_types = extract_err_type(err_info)
-        f_log.write(err_info + "\n")
-        if err_info == "" or done_flag:
-            break
     
     # Mutation Phase
     print("=============== Mutation Phase ===============")
@@ -243,9 +178,6 @@ def main():
         # replace each error spec with mutated spec
         for lineno in refuted_lineno_list:
             index = lineno - 1
-            if is_assert(current_code_list[index]):
-                current_code_list[index] = " "
-                continue
             if not is_invariant_or_postcondition(current_code_list[index]):
                 continue
             # Find mutated spec with same lineno
@@ -270,86 +202,6 @@ def main():
         f_log.write(err_info + "\n")
 
     print("\nFinished. Verifier invoked {num} times".format(num=num_verify))
-
-    '''
-    # Mutation Phase
-    print("=============== Mutation of Invariants ===============")
-    current_code_list = current_code.split('\n')
-    mutated_spec_list = []
-    for lineno in range(len(current_code_list)):
-        if current_code_list[lineno].find("@") != -1 and (current_code_list[lineno].find("maintaining") != -1 or current_code_list[lineno].find("loop_invariant") != -1):
-            for mutated_spec in spec_mutator(current_code_list[lineno]):
-                mutated_spec_list.append({"content": mutated_spec, "lineno": lineno})
-    for item in reversed(mutated_spec_list):
-        current_code_list.insert(item["lineno"], item["content"])
-    current_code = ""
-    for line in current_code_list:
-        current_code = current_code + line + "\n"
-    print(current_code)
-
-    # Reduction Phase
-    print("=============== Reduction of Invariants ===============")
-    err_info = "anything"
-    while True:
-        err_info = validate_openjml(current_code, classname)
-        print(err_info)
-        if err_info == "":
-            break
-        refuted_lineno_list = extract_lineno_from_err_info(err_info)
-        new_code_list = []
-        for index in range((len(current_code_list))):
-            if index + 1 in refuted_lineno_list and current_code_list[index].find("@") != -1 and (current_code_list[lineno].find("maintaining") != -1 or current_code_list[lineno].find("loop_invariant") != -1):
-                pass #deleted
-            else:
-                new_code_list.append(current_code_list[index])
-                flag = True
-        current_code_list = new_code_list
-        current_code = ""
-        for line in current_code_list:
-            current_code = current_code + line + "\n"
-        print(current_code)
-        if not flag:
-            break
-
-    # Mutation Phase
-    print("=============== Mutation of Postconditions ===============")
-    current_code_list = current_code.split('\n')
-    mutated_spec_list = []
-    for lineno in range(len(current_code_list)):
-        if current_code_list[lineno].find("@") != -1 and current_code_list[lineno].find("ensures") != -1:
-            for mutated_spec in spec_mutator(current_code_list[lineno]):
-                mutated_spec_list.append({"content": mutated_spec, "lineno": lineno})
-    for item in reversed(mutated_spec_list):
-        current_code_list.insert(item["lineno"], item["content"])
-    current_code = ""
-    for line in current_code_list:
-        current_code = current_code + line + "\n"
-    print(current_code)
-
-    # Reduction Phase
-    print("=============== Reduction of Postconditions ===============")
-    err_info = "anything"
-    while True:
-        err_info = validate_openjml(current_code, classname)
-        print(err_info)
-        if err_info == "":
-            break
-        refuted_lineno_list = extract_lineno_from_err_info(err_info)
-        new_code_list = []
-        for index in range((len(current_code_list))):
-            if index + 1 in refuted_lineno_list and current_code_list[index].find("@") != -1:
-                pass
-            else:
-                new_code_list.append(current_code_list[index])
-                flag = True
-        current_code_list = new_code_list
-        current_code = ""
-        for line in current_code_list:
-            current_code = current_code + line + "\n"
-        print(current_code)
-        if not flag:
-            break
-    '''
     
     f_log.close()
 
