@@ -1,0 +1,124 @@
+public class PrimeNumbers{
+
+      /*@ spec_public */ private static int primeArray[];
+
+      /*@ requires (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= 2)); */
+      /*@ requires (\forall int i, j; (0 <= i && i <= PrimeNumbers.primeArray.length-1 && 0 <= j && j <= PrimeNumbers.primeArray.length-1) ==> ((i+1 == j) ==> (PrimeNumbers.primeArray[i] < PrimeNumbers.primeArray[j]))); */
+      /*@ requires n - PrimeNumbers.primeArray.length - 1 == 0; */
+      /*@ modifies PrimeNumbers.primeArray, PrimeNumbers.primeArray[*]; */
+      /*@ ensures PrimeNumbers.primeArray == \result; */
+      /*@ ensures \old(n) == PrimeNumbers.primeArray.length; */
+      /*@ ensures \old(n) == \result.length; */
+      /*@ ensures PrimeNumbers.primeArray.length-1 == \old(PrimeNumbers.primeArray.length); */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= 2)); */
+      /*@ ensures (\forall int i, j; (0 <= i && i <= PrimeNumbers.primeArray.length-1 && 0 <= j && j <= PrimeNumbers.primeArray.length-1) ==> ((i+1 == j) ==> (PrimeNumbers.primeArray[i] < PrimeNumbers.primeArray[j]))); */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] <= PrimeNumbers.primeArray[\old(n)-1])); */
+      /*@ ensures (\forall int i; (0 <= i && i <= \old(PrimeNumbers.primeArray.length-1)) ==> (\old(PrimeNumbers.primeArray[i]) < PrimeNumbers.primeArray[\old(n)-1])); */
+      public static int[] primeList(int n)
+      {
+            int status = 1, num = 3, count, j;
+            primeArray = new int[n];
+            primeArray[0] = 2;
+
+            for (count = 2; count <= n;)
+            { 
+                  __Loop_Invariant_Dummy1(n, status, num, count, primeArray);
+                  for (j = 2; j <= num/2; j++)
+                  { 
+                        __Loop_Invariant_Dummy2(n, status, num, count, j, primeArray);
+                        if (num%j == 0)
+                        {
+                              status = 0;
+                              break;
+                        }
+                  }
+
+                  if (status != 0)
+                  {  
+                        primeArray[count - 1] = num;
+                        count++;
+                  }
+                  status = 1;
+
+                  num++;
+            } 
+            return primeArray; 
+      }
+
+      /*@ requires PrimeNumbers.primeArray == primeArray; */
+      /*@ requires n == PrimeNumbers.primeArray.length; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == PrimeNumbers.primeArray[count-1]; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == primeArray[count-1]; */
+      /*@ requires PrimeNumbers.primeArray != null; */
+      /*@ requires status == 1; */
+      /*@ requires count >= 2; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == 0; */
+      /*@ requires (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] < num)); */
+      /*@ requires (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= PrimeNumbers.primeArray[n-1])); */
+      /*@ requires num > PrimeNumbers.primeArray[n-1]; */
+      /*@ requires count <= PrimeNumbers.primeArray.length; */
+      /*@ ensures PrimeNumbers.primeArray == \old(primeArray); */
+      /*@ ensures \old(n) == PrimeNumbers.primeArray.length; */
+      /*@ ensures \old(n) == \old(primeArray.length); */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == PrimeNumbers.primeArray[\old(count)-1]; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == primeArray[\old(count)-1]; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == \old(PrimeNumbers.primeArray[count-1]); */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == \old(primeArray[count-1]); */
+      /*@ ensures PrimeNumbers.primeArray != null; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == 0; */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] < \old(num))); */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= PrimeNumbers.primeArray[\old(n)-1])); */
+      /*@ ensures \old(n) >= \old(count); */
+      /*@ ensures \old(num) > PrimeNumbers.primeArray[\old(n)-1]; */
+      public static void __Loop_Invariant_Dummy1 (int n, int status, int num, int count, int[] primeArray) {}
+
+      /*@ requires PrimeNumbers.primeArray == primeArray; */
+      /*@ requires n == PrimeNumbers.primeArray.length; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == PrimeNumbers.primeArray[count-1]; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == primeArray[count-1]; */
+      /*@ requires PrimeNumbers.primeArray != null; */
+      /*@ requires status == 1; */
+      /*@ requires j >= 2; */
+      /*@ requires PrimeNumbers.primeArray[n-1] == 0; */
+      /*@ requires (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] < num)); */
+      /*@ requires (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= PrimeNumbers.primeArray[n-1])); */
+      /*@ requires num > j; */
+      /*@ requires num > PrimeNumbers.primeArray[n-1]; */
+      /*@ requires count <= PrimeNumbers.primeArray.length; */
+      /*@ requires j > PrimeNumbers.primeArray[n-1]; */
+      /*@ ensures PrimeNumbers.primeArray == \old(primeArray); */
+      /*@ ensures \old(n) == PrimeNumbers.primeArray.length; */
+      /*@ ensures \old(n) == \old(primeArray.length); */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == PrimeNumbers.primeArray[\old(count)-1]; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == primeArray[\old(count)-1]; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == \old(PrimeNumbers.primeArray[count-1]); */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == \old(primeArray[count-1]); */
+      /*@ ensures PrimeNumbers.primeArray != null; */
+      /*@ ensures PrimeNumbers.primeArray[\old(n)-1] == 0; */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] < \old(num))); */
+      /*@ ensures (\forall int i; (0 <= i && i <= PrimeNumbers.primeArray.length-1) ==> (PrimeNumbers.primeArray[i] >= PrimeNumbers.primeArray[\old(n)-1])); */
+      /*@ ensures \old(n) >= \old(count); */
+      /*@ ensures \old(num) > PrimeNumbers.primeArray[\old(n)-1]; */
+      /*@ ensures \old(j) > PrimeNumbers.primeArray[\old(n)-1]; */
+      public static void __Loop_Invariant_Dummy2 (int n, int status, int num, int count, int j, int[] primeArray) {}
+
+    /*@ requires PrimeNumbers.primeArray == null; */
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ modifies PrimeNumbers.primeArray, PrimeNumbers.primeArray[*]; */
+    /*@ ensures PrimeNumbers.primeArray != null; */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures PrimeNumbers.primeArray.length == 8; */
+    public static void main(String[] args) {
+         primeList(1);
+         primeList(2);
+         primeList(3);
+         primeList(4);
+         primeList(5);
+         primeList(6);
+         primeList(7);
+         primeList(8);
+      }
+
+}

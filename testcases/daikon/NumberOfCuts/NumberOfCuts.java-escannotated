@@ -1,0 +1,23 @@
+class NumberOfCuts {
+    public static int numberOfCuts(int n) {
+        if (n == 1) {
+            return 0;
+        }
+        if (n % 2 == 0) {
+            return n / 2;
+        }
+        return n;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        numberOfCuts(0);
+        numberOfCuts(1);
+        numberOfCuts(2);
+        numberOfCuts(3);
+        numberOfCuts(8);
+    }
+}

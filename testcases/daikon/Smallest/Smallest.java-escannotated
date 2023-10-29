@@ -1,0 +1,56 @@
+public class Smallest {
+
+    /*@ ensures (\result == -1)  ==>  (\old(a) != null); */
+    /*@ ensures (\result == -1)  ==>  (\result == a.length-1); */
+    /*@ ensures (\result >= 0)  ==>  ((\forall int i; (0 <= i && i <= a.length-1) ==> (a[i] >= a[\result]))); */
+    /*@ ensures \result <= a.length-1; */
+    static public int Smallest(int[] a) {
+        if (a.length == 0) return -1;
+
+        int index = 0;
+        int smallest = 0;
+
+        while (a.length - index > 0) {
+            __Loop_Invariant_Dummy1(a, index, smallest);
+            if (a[index] < a[smallest]) {
+                smallest = index;
+            }
+            index = index + 1;
+        }
+        return smallest;
+    }
+
+    /*@ requires a != null; */
+    /*@ requires index >= 0; */
+    /*@ requires smallest >= 0; */
+    /*@ requires index >= smallest; */
+    /*@ requires index <= a.length-1; */
+    /*@ requires smallest <= a.length-1; */
+    /*@ ensures \old(index) <= a.length-1; */
+    /*@ ensures \old(smallest) <= a.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] a, int index, int smallest) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        Smallest(arr);
+        arr = new int[]{};
+        Smallest(arr);
+        arr = new int[]{0};
+        Smallest(arr);
+        arr = new int[]{-2, -1};
+        Smallest(arr);
+        arr = new int[]{2, 3};
+        Smallest(arr);
+        arr = new int[]{0, -1};
+        Smallest(arr);
+        arr = new int[]{-2, -3, -114, 114};
+        Smallest(arr);
+        arr = new int[]{-2, -3, 245, -1145, 114, 810};
+        Smallest(arr);
+    }
+}
+

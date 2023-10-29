@@ -1,0 +1,65 @@
+import java.util.Arrays;
+
+public class ContainsDuplicate {
+
+    /*@ requires nums != null; */
+    /*@ modifies nums[*]; */
+    /*@ ensures (\result == false)  ==>  ((\forall int i, j; (0 <= i && i <= nums.length-1 && 0 <= j && j <= nums.length-1) ==> ((i+1 == j) ==> (nums[i] < nums[j])))); */
+    /*@ ensures (\forall int i, j; (0 <= i && i <= nums.length-1 && 0 <= j && j <= nums.length-1) ==> ((i+1 == j) ==> (nums[i] <= nums[j]))); */
+    public static boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            __Loop_Invariant_Dummy1(nums, n, i);
+            if (nums[i] == nums[i + 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*@ requires n == nums.length; */
+    /*@ requires nums != null; */
+    /*@ requires (\forall int i, j; (0 <= i && i <= nums.length-1 && 0 <= j && j <= nums.length-1) ==> ((i+1 == j) ==> (nums[i] <= nums[j]))); */
+    /*@ requires i >= 0; */
+    /*@ requires (\forall int i; (0 <= i && i <= nums.length-1) ==> (nums[i] <= nums[n-1])); */
+    /*@ requires i < nums.length-1; */
+    /*@ requires nums[n-1] >= nums[i]; */
+    /*@ ensures (\forall int i, j; (0 <= i && i <= nums.length-1 && 0 <= j && j <= nums.length-1) ==> ((i+1 == j) ==> (nums[i] <= nums[j]))); */
+    /*@ ensures (\forall int i; (0 <= i && i <= nums.length-1) ==> (nums[i] <= nums[\old(n)-1])); */
+    /*@ ensures \old(i) < nums.length-1; */
+    /*@ ensures nums[\old(n)-1] >= nums[\old(i)]; */
+    public static void __Loop_Invariant_Dummy1(int[] nums, int n, int i) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        containsDuplicate(arr);
+        arr = new int[]{0};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -1};
+        containsDuplicate(arr);
+        arr = new int[]{2, 3, 2};
+        containsDuplicate(arr);
+        arr = new int[]{0, 1};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -3};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -3, 114, 514, 1919, 810, 1919};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -3, 114, 514, 1919, 810};
+        containsDuplicate(arr);
+        arr = new int[]{-2, 514, 114, 514, 1919, 810};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -3, 114, 1919, 810, -124};
+        containsDuplicate(arr);
+        arr = new int[]{-2, -3, 114, 514, 114, 810, 1293, 1919, 810};
+        containsDuplicate(arr);
+        arr = new int[]{514, 114, 810, -2, -5, 1293, 199, 1039};
+        containsDuplicate(arr);
+    }
+}

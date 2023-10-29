@@ -1,0 +1,59 @@
+public class SetZero {
+
+	/*@ requires iBegin >= 0; */
+	/*@ requires iBegin <= a.length-1; */
+	/*@ requires iEnd <= a.length; */
+	/*@ modifies a[*]; */
+	/*@ ensures a[\old(iBegin)] == -2 || a[\old(iBegin)] == 0 || a[\old(iBegin)] == 1; */
+	/*@ ensures \old(iBegin) <= a.length-1; */
+	public static void SetZero(int[] a, int iBegin, int iEnd) {
+		int k = iBegin;
+
+		while (k < iEnd) {
+            __Loop_Invariant_Dummy1(a, iBegin, iEnd, k);
+            a[k] = 0;
+            k = k + 1 ;
+        }
+	}
+
+    /*@ requires a != null; */
+    /*@ requires iBegin >= 0; */
+    /*@ requires iEnd == 1 || iEnd == 2 || iEnd == 4; */
+    /*@ requires k >= 0; */
+    /*@ requires iBegin < iEnd; */
+    /*@ requires iBegin <= k; */
+    /*@ requires iBegin <= a.length-1; */
+    /*@ requires iEnd > k; */
+    /*@ requires iEnd <= a.length; */
+    /*@ requires iEnd >= a.length-1; */
+    /*@ requires k <= a.length-1; */
+    /*@ ensures \old(iBegin) <= a.length-1; */
+    /*@ ensures \old(iEnd) >= a.length-1; */
+    /*@ ensures \old(k) <= a.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] a, int iBegin, int iEnd, int k) {}
+
+	/*@ requires args != null; */
+	/*@ requires \typeof(args) == \type(java.lang.String[]); */
+	/*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+	/*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+	public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        SetZero(arr, 0, 4);
+        arr = new int[]{514, 114, 114514, 2};
+        SetZero(arr, 0, 4);
+        arr = new int[]{514, 114, 114514, 2};
+        SetZero(arr, 2, 4);
+        arr = new int[]{514, 114, 114514, 2};
+        SetZero(arr, 3, 4);
+        arr = new int[]{0};
+        SetZero(arr, 0, 1);
+        arr = new int[]{-2, -1};
+        SetZero(arr, 1, 2);
+        arr = new int[]{2, 3};
+        SetZero(arr, 0, 1);
+        arr = new int[]{0, 1};
+        SetZero(arr, 1, 0);
+        arr = new int[]{-2, -3, 0};
+        SetZero(arr, 0, 0);
+    }
+}

@@ -1,0 +1,65 @@
+class IsOneBitCharacter {
+    /*@ requires bits != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] == 0 || bits[i] == 1)); */
+    /*@ requires (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] <= bits.length)); */
+    /*@ ensures (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] == 0 || bits[i] == 1)); */
+    /*@ ensures (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] <= \old(bits.length))); */
+    public static boolean isOneBitCharacter(int[] bits) {
+        int n = bits.length, i = 0;
+        while (i < n - 1) {
+            __Loop_Invariant_Dummy1(bits, n, i);
+            i += bits[i] + 1;
+        }
+        return i == n - 1;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 0, 1, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{0};
+        isOneBitCharacter(arr);
+        arr = new int[]{1};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 1, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 0, 0, 0, 1, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 0, 0, 0, 1, 0, 1};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 0, 0, 0, 1, 0, 1, 1};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 0, 0, 0, 1, 0, 1, 1, 1, 1};
+        isOneBitCharacter(arr);
+        arr = new int[]{0, 0, 0, 0, 1, 0, 1, 1, 1, 1};
+        isOneBitCharacter(arr);
+        arr = new int[]{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{0, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{0, 0, 0, 0, 0, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{0, 0, 0, 0, 0};
+        isOneBitCharacter(arr);
+        arr = new int[]{0, 0, 0, 0};
+        isOneBitCharacter(arr);
+    }
+
+    /*@ requires n == bits.length; */
+    /*@ requires bits != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] == 0 || bits[i] == 1)); */
+    /*@ requires i >= 0; */
+    /*@ requires (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] < bits.length-1)); */
+    /*@ requires i < bits.length-1; */
+    /*@ requires bits.length-1 > bits[n-1]; */
+    /*@ requires bits.length-1 > bits[i]; */
+    /*@ ensures (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] == 0 || bits[i] == 1)); */
+    /*@ ensures (\forall int i; (0 <= i && i <= bits.length-1) ==> (bits[i] < bits.length-1)); */
+    /*@ ensures \old(i) < bits.length-1; */
+    /*@ ensures bits.length-1 > bits[\old(n)-1]; */
+    /*@ ensures bits.length-1 > bits[\old(i)]; */
+    public static void __Loop_Invariant_Dummy1(int[] bits, int n, int i) {}
+}

@@ -1,0 +1,21 @@
+class PowerOfTwo {
+    /*@ ensures (\result == true)  ==>  (\old(n) is a power of 2); */
+    public static boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isPowerOfTwo(0);
+        isPowerOfTwo(1);
+        isPowerOfTwo(2);
+        isPowerOfTwo(-1);
+        isPowerOfTwo(-2);
+        isPowerOfTwo(4);
+        isPowerOfTwo(7);
+        isPowerOfTwo(8);
+    }
+}

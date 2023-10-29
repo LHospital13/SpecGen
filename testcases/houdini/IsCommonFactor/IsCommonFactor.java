@@ -1,8 +1,8 @@
 public class IsCommonFactor {
-    public boolean isCommonFactor (int a, int b, int factor) {
+    public static boolean isCommonFactor (int a, int b, int factor) {
         return a % factor == 0 && b % factor == 0;
     }
-    public void __HoudiniInvoker() {
+    public static void main(String[] args) {
         isCommonFactor(-4, 0, 1);
         isCommonFactor(0, -4, 2);
         isCommonFactor(4, 0, 5);
@@ -14,5 +14,6 @@ public class IsCommonFactor {
         isCommonFactor(4, -4, 1);
         isCommonFactor(1, -1, 1);
         isCommonFactor(-1, 1, 2);
+        isCommonFactor(-1, 1, 1);
     }
 }

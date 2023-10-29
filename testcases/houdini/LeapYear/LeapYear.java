@@ -1,6 +1,6 @@
 public class LeapYear {
     
-    public  boolean isLeapYear(int year) {
+    public static boolean isLeapYear(int year) {
         boolean leap = false;
          
         if (year % 4 == 0)
@@ -21,10 +21,19 @@ public class LeapYear {
 	    return leap;
     }
 
-    public void __HoudiniInvoker() {
+    public static void main(String[] args) {
+        isLeapYear(-4);
+        isLeapYear(-3);
+        isLeapYear(-2);
+        isLeapYear(-1);
         isLeapYear(0);
         isLeapYear(1);
         isLeapYear(2);
         isLeapYear(2000);
+        isLeapYear(2004);
+        isLeapYear(2008);
+        isLeapYear(2001);
+        isLeapYear(2010);
+        isLeapYear(2011);
     }
 }

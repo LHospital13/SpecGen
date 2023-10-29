@@ -20,7 +20,7 @@ public class AddLoop {
         return sum;
     }
     
-    public void __HoudiniInvoker() {
+    public static void main(String[] args) {
         AddLoop(-4, 0);
         AddLoop(0, -4);
         AddLoop(4, 0);
@@ -32,6 +32,15 @@ public class AddLoop {
         AddLoop(4, -4);
         AddLoop(1, -1);
         AddLoop(-1, 1);
+        AddLoop(1, 2);
+        AddLoop(2, 1);
+        AddLoop(-2, -1);
+        AddLoop(-1, -2);
+        AddLoop(-2, 1);
+        AddLoop(-1, 2);
+        AddLoop(3, -5);
+        AddLoop(-3, 5);
+        AddLoop(3, 5);
     }
 
     public static void __Loop_Invariant_Dummy1(int x, int y, int n, int sum) {}

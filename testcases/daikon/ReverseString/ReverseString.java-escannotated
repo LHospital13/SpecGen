@@ -1,0 +1,46 @@
+class ReverseString {
+    /*@ modifies s[*]; */
+    public static void reverseString(char[] s) {
+        int n = s.length;
+        for (int left = 0, right = n - 1; left < right; ++left, --right) {
+            __Loop_Invariant_Dummy1(s, n, left, right);
+            char tmp = s[left];
+            s[left] = s[right];
+            s[right] = tmp;
+        }
+    }
+
+    /*@ requires n == s.length; */
+    /*@ requires s != null; */
+    /*@ requires left >= 0; */
+    /*@ requires left < right; */
+    /*@ requires left < s.length-1; */
+    /*@ requires right <= s.length-1; */
+    /*@ requires n - left - right - 1 == 0; */
+    /*@ requires left + right - s.length-1 == 0; */
+    /*@ ensures \old(left) < s.length-1; */
+    /*@ ensures \old(right) <= s.length-1; */
+    /*@ ensures \old(left) + \old(right) - s.length-1 == 0; */
+    public static void __Loop_Invariant_Dummy1(char[] s, int n, int left, int right) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        char[] arr = new char[]{'h', 'e', 'l', 'l', 'o'};
+        reverseString(arr);
+        arr = new char[]{'a'};
+        reverseString(arr);
+        arr = new char[]{'b', 'a'};
+        reverseString(arr);
+        arr = new char[]{};
+        reverseString(arr);
+        arr = new char[]{'1', '1', '4', '5', '1', '4'};
+        reverseString(arr);
+        arr = new char[]{'1', '9', '1', '9', '8', '1', '0'};
+        reverseString(arr);
+        arr = new char[]{'1', '9', '1', '9', '8', '1', '0', '0', '1'};
+        reverseString(arr);
+    }
+}

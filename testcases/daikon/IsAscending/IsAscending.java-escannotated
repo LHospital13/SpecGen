@@ -1,0 +1,61 @@
+public class IsAscending {
+    /*@ requires arr != null; */
+    /*@ ensures (\result == true)  ==>  ((\forall int i, j; (0 <= i && i <= arr.length-1 && 0 <= j && j <= arr.length-1) ==> ((i+1 == j) ==> (arr[i] < arr[j])))); */
+    public static boolean isAscending (int[] arr) {
+        int n = arr.length;
+        if (n < 2) {
+            return true;
+        }
+        for (int i = 0; i < n - 1; i++) {
+            __Loop_Invariant_Dummy1(arr, n, i);
+            if(arr[i] >= arr[i+1])
+                return false;
+        }
+        return true;
+    }
+
+    /*@ requires n == arr.length; */
+    /*@ requires arr != null; */
+    /*@ requires n >= 2; */
+    /*@ requires i >= 0; */
+    /*@ requires i < arr.length-1; */
+    /*@ ensures \old(i) < arr.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] arr, int n, int i) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        isAscending(arr);
+        arr = new int[]{0};
+        isAscending(arr);
+        arr = new int[]{-2, -1};
+        isAscending(arr);
+        arr = new int[]{2, 3};
+        isAscending(arr);
+        arr = new int[]{0, 1};
+        isAscending(arr);
+        arr = new int[]{-2, -3};
+        isAscending(arr);
+        arr = new int[]{0, -3, 1, 10};
+        isAscending(arr);
+        arr = new int[]{-3, 0, 1, 10};
+        isAscending(arr);
+        arr = new int[]{-2, -3, 0};
+        isAscending(arr);
+        arr = new int[]{-2, -1, 8};
+        isAscending(arr);
+        arr = new int[]{2, 2};
+        isAscending(arr);
+        arr = new int[]{0, 1, 213, 703, 713, -32};
+        isAscending(arr);
+        arr = new int[]{0, 1, 213, 703, 713, 1919};
+        isAscending(arr);
+        arr = new int[]{-2, 2, 114, 514, 810, 114514};
+        isAscending(arr);
+        arr = new int[]{114, 512, 513, 514, 810, 927, 999, 0, 114514};
+        isAscending(arr);
+    }
+}

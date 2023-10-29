@@ -1,0 +1,64 @@
+public class LinearSearch {
+    /*@ spec_public */ private static  int location;
+
+    /*@ requires array != null; */
+    /*@ requires LinearSearch.location <= array.length; */
+    /*@ modifies LinearSearch.location, array[LinearSearch.location], array[LinearSearch.location-1]; */
+    /*@ ensures LinearSearch.location == \result; */
+    /*@ ensures LinearSearch.location <= array.length-1; */
+    public static int linearSearch(int array[], int search) {
+        int c;
+
+        for (c = 0; c < array.length; c++) { 
+            __Loop_Invariant_Dummy1(array, search, c);
+            if (array[c] == search) {
+                location = c;
+                break;
+            }
+        }
+        if (c == array.length) {
+            location = -1;
+        }
+        return location;
+    }
+
+    /*@ requires array != null; */
+    /*@ requires c >= 0; */
+    /*@ requires c <= array.length-1; */
+    /*@ ensures \old(c) <= array.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] array, int search, int c) {}
+
+    /*@ requires LinearSearch.location == 0; */
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ modifies LinearSearch.location; */
+    /*@ ensures LinearSearch.location == 9; */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        linearSearch(arr, -2);
+        arr = new int[]{0};
+        linearSearch(arr, 0);
+        arr = new int[]{-2, -1};
+        linearSearch(arr, -1);
+        arr = new int[]{2, 3};
+        linearSearch(arr, 2);
+        arr = new int[]{0, 1};
+        linearSearch(arr, 1);
+        arr = new int[]{-2, -3};
+        linearSearch(arr, -3);
+        arr = new int[]{0, 4};
+        linearSearch(arr, 5);
+        arr = new int[]{-2, -1, 8};
+        linearSearch(arr, 8);
+        arr = new int[]{2, 3};
+        linearSearch(arr, 90);
+        arr = new int[]{0, 1, 213, 703, 713};
+        linearSearch(arr, 703);
+        arr = new int[]{-2, 2, 114, 514, 810, 114514};
+        linearSearch(arr, 810);
+        arr = new int[]{-2, 2, 114, 512, 513, 514, 810, 927, 999, 114514};
+        linearSearch(arr, 114514);
+    }
+}

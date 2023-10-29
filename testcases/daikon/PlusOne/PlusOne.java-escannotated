@@ -1,0 +1,60 @@
+class PlusOne {
+    /*@ requires (\forall int i; (0 <= i && i <= digits.length-1) ==> (digits[i] >= 0)); */
+    /*@ requires digits.length >= 1; */
+    /*@ modifies digits[*]; */
+    /*@ ensures (digits.length == \old(digits.length))  ==>  ((\forall int i; (0 <= i && i <= \old(digits.length-1)) ==> (\old(digits[i]) >= 0))); */
+    /*@ ensures (digits.length == \old(digits.length))  ==>  (\result == \old(digits)); */
+    /*@ ensures (digits.length-1 == \old(digits.length))  ==>  ((\forall int i; (0 <= i && i <= digits.length-1) ==> (digits[i] == 0 || digits[i] == 1))); */
+    /*@ ensures (digits.length-1 == \old(digits.length))  ==>  ((\forall int i; (0 <= i && i <= \old(digits.length-1)) ==> (\old(digits[i]) == 9))); */
+    /*@ ensures (digits.length-1 == \old(digits.length))  ==>  ((\forall int i; (0 <= i && i <= \result.length-1) ==> (\result[i] == 0 || \result[i] == 1))); */
+    /*@ ensures (\forall int i; (0 <= i && i <= \result.length-1) ==> (\result[i] >= 0)); */
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            __Loop_Invariant_Dummy1(digits, i);
+            digits[i]++;
+            digits[i] = digits[i] % 10;
+            if (digits[i] != 0) return digits;
+        }
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
+        return digits;
+    }
+
+    /*@ requires digits != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= digits.length-1) ==> (digits[i] >= 0)); */
+    /*@ requires i >= 0; */
+    /*@ requires digits.length >= 1; */
+    /*@ requires i <= digits.length-1; */
+    /*@ ensures (\forall int i; (0 <= i && i <= digits.length-1) ==> (digits[i] >= 0)); */
+    /*@ ensures \old(i) <= digits.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] digits, int i) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 0, 1, 0};
+        plusOne(arr);
+        arr = new int[]{0};
+        plusOne(arr);
+        arr = new int[]{1};
+        plusOne(arr);
+        arr = new int[]{1, 1, 4};
+        plusOne(arr);
+        arr = new int[]{5, 1, 4};
+        plusOne(arr);
+        arr = new int[]{9, 9, 9};
+        plusOne(arr);
+        arr = new int[]{1, 9, 1, 9};
+        plusOne(arr);
+        arr = new int[]{1, 9, 1, 9, 8, 1, 0};
+        plusOne(arr);
+        arr = new int[]{9};
+        plusOne(arr);
+        arr = new int[]{9, 9};
+        plusOne(arr);
+        arr = new int[]{9, 9, 9, 9};
+        plusOne(arr);
+    }
+}

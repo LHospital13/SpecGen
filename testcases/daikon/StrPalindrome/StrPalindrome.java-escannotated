@@ -1,0 +1,38 @@
+public class StrPalindrome {
+   /*@ spec_public */ private static String reverse = "";
+   
+   /*@ modifies StrPalindrome.reverse, StrPalindrome.reverse.toString; */
+   /*@ ensures (\result == true)  ==>  (\old(StrPalindrome.reverse) != null); */
+   public static boolean isPalindrome(String str) {
+      
+      int length = str.length();
+
+      for (int i = length - 1; 0 <= i; i--) {
+         __Loop_Invariant_Dummy1(str, length, i);
+         reverse = reverse + str.charAt(i);
+      }
+      
+      return reverse.equals(str);
+   }
+
+   /*@ requires str != null; */
+   /*@ requires i >= 0; */
+   /*@ requires length > i; */
+   public static void __Loop_Invariant_Dummy1(String str, int length, int i) {}
+
+    /*@ requires StrPalindrome.reverse != null; */
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ modifies StrPalindrome.reverse, StrPalindrome.reverse.toString; */
+    /*@ ensures StrPalindrome.reverse != null; */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isPalindrome("");
+        isPalindrome("a");
+        isPalindrome("aabb");
+        isPalindrome("ab");
+        isPalindrome("qabababc");
+        isPalindrome("dagvwhfejrk");
+    }
+} 

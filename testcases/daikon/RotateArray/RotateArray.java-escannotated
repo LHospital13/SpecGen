@@ -1,0 +1,47 @@
+
+class RotateArray {
+    /*@ modifies nums[*]; */
+    public static void rotate(int[] nums, int k) {
+        int n = nums.length;
+        while(k < 0) {
+            k = k + n;
+        }
+        int[] newArr = new int[n];
+        for (int i = 0; i < n; ++i) {
+            __Loop_Invariant_Dummy1(nums, k, n, newArr, i);
+            newArr[(i + k) % n] = nums[i];
+        }
+        System.arraycopy(newArr, 0, nums, 0, n);
+    }
+
+    /*@ requires n == nums.length; */
+    /*@ requires n == newArr.length; */
+    /*@ requires nums != null; */
+    /*@ requires k >= 0; */
+    /*@ requires newArr != null; */
+    /*@ requires i >= 0; */
+    /*@ requires i <= nums.length-1; */
+    /*@ ensures \old(i) <= nums.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[] nums, int k, int n, int[] newArr, int i) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        rotate(arr, -2);
+        arr = new int[]{0};
+        rotate(arr, 0);
+        arr = new int[]{-2, -1};
+        rotate(arr, -1);
+        arr = new int[]{2, 3};
+        rotate(arr, 2);
+        arr = new int[]{0, 1};
+        rotate(arr, 1);
+        arr = new int[]{-2, -3, -4};
+        rotate(arr, -3);
+        arr = new int[]{114, 514, 1919};
+        rotate(arr, 4);
+    }
+}

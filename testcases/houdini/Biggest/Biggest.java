@@ -18,7 +18,7 @@ public class Biggest {
 
     public static void __Loop_Invariant_Dummy1(int[] a, int index, int biggest) {}
 
-    public void __HoudiniInvoker() {
+    public static void main(String[] args) {
         int[] arr = new int[]{-2, -1, 0, 1, 2};
         biggest(arr);
         arr = new int[]{0};
@@ -30,6 +30,10 @@ public class Biggest {
         arr = new int[]{0, 1};
         biggest(arr);
         arr = new int[]{-2, -3};
+        biggest(arr);
+        arr = new int[]{0, 4};
+        biggest(arr);
+        arr = new int[]{-2, -1, 8};
         biggest(arr);
     }
 }

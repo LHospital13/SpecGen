@@ -1,0 +1,96 @@
+class Merge {
+    /*@ modifies nums1[*]; */
+    public static void merge(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length;
+        int p1 = 0, p2 = 0;
+        int[] sorted = new int[m + n];
+        int cur = 0;
+        while (p1 < m || p2 < n) {
+            __Loop_Invariant_Dummy1(nums1, nums2, m, n, p1, p2, sorted, cur);
+            if (p1 == m) {
+                cur = nums2[p2++];
+            } else if (p2 == n) {
+                cur = nums1[p1++];
+            } else if (nums1[p1] < nums2[p2]) {
+                cur = nums1[p1++];
+            } else {
+                cur = nums2[p2++];
+            }
+            sorted[p1 + p2 - 1] = cur;
+        }
+        nums1 = new int[m + n];
+        for (int i = 0; i != m + n; ++i) {
+            nums1[i] = sorted[i];
+        }
+    }
+
+    /*@ requires m == nums1.length; */
+    /*@ requires n == nums2.length; */
+    /*@ requires nums1 != null; */
+    /*@ requires nums2 != null; */
+    /*@ requires p1 >= 0; */
+    /*@ requires p2 >= 0; */
+    /*@ requires sorted != null; */
+    /*@ requires m >= p1; */
+    /*@ requires m <= sorted.length-1; */
+    /*@ requires n >= p1; */
+    /*@ requires n >= p2; */
+    /*@ requires n >= nums1.length-1; */
+    /*@ requires n <= sorted.length-1; */
+    /*@ requires p1 < sorted.length-1; */
+    /*@ requires p2 <= sorted.length-1; */
+    /*@ requires !(\forall int i; (0 <= i && i <= sorted.length-1) ==> (sorted[i] != cur)); */
+    /*@ requires m + n - sorted.length == 0; */
+    /*@ requires m + n - sorted.length-1 - 1 == 0; */
+    /*@ requires m + nums2.length-1 - sorted.length + 1 == 0; */
+    /*@ requires m + nums2.length-1 - sorted.length-1 == 0; */
+    /*@ requires n + nums1.length-1 - sorted.length + 1 == 0; */
+    /*@ requires n + nums1.length-1 - sorted.length-1 == 0; */
+    /*@ requires nums1.length-1 + nums2.length-1 - sorted.length + 2 == 0; */
+    /*@ requires nums1.length-1 + nums2.length-1 - sorted.length-1 + 1 == 0; */
+    /*@ ensures !(\forall int i; (0 <= i && i <= sorted.length-1) ==> (sorted[i] != \old(cur))); */
+    /*@ ensures \old(m) <= sorted.length-1; */
+    /*@ ensures \old(n) >= nums1.length-1; */
+    /*@ ensures \old(n) <= sorted.length-1; */
+    /*@ ensures \old(p1) < sorted.length-1; */
+    /*@ ensures \old(p2) <= sorted.length-1; */
+    /*@ ensures \old(m) + \old(n) - sorted.length-1 - 1 == 0; */
+    /*@ ensures \old(m) + nums2.length-1 - sorted.length-1 == 0; */
+    /*@ ensures \old(m) + nums2.length-1 - \old(sorted.length) + 1 == 0; */
+    /*@ ensures \old(n) + nums1.length-1 - sorted.length-1 == 0; */
+    /*@ ensures \old(n) + nums1.length-1 - \old(sorted.length) + 1 == 0; */
+    /*@ ensures nums1.length-1 + nums2.length-1 - sorted.length-1 + 1 == 0; */
+    /*@ ensures nums1.length-1 + nums2.length-1 - \old(sorted.length) + 2 == 0; */
+    public static void __Loop_Invariant_Dummy1(int[] nums1, int[] nums2, int m, int n, int p1, int p2, int[] sorted, int cur) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr1 = new int[]{-2, -1, 0, 1, 2, 3};
+        int[] arr2 = new int[]{-2, -1, 0, 1, 2};
+        merge(arr1, arr2);
+        arr1 = new int[]{0};
+        arr2 = new int[]{-2, -1};
+        merge(arr1, arr2);
+        arr1 = new int[]{-2, -1};
+        arr2 = new int[]{0, 1};
+        merge(arr1, arr2);
+        arr1 = new int[]{2, 3};
+        arr2 = new int[]{2, 3};
+        merge(arr1, arr2);
+        arr1 = new int[]{0, 1};
+        arr2 = new int[]{-2, -1, 0, 1, 2, 3};
+        merge(arr1, arr2);
+        arr1 = new int[]{-2, 3};
+        arr2 = new int[]{0};
+        merge(arr1, arr2);
+        arr1 = new int[]{-10, -3, -5};
+        arr2 = new int[]{-10, -3, -5};
+        merge(arr1, arr2);
+        arr1 = new int[]{-3, 4, 114, 514, 1919};
+        arr2 = new int[]{-2, 3, 114, 234, 810};
+        merge(arr1, arr2);
+    }
+}

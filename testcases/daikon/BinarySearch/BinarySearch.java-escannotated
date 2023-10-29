@@ -1,0 +1,76 @@
+public class BinarySearch {
+
+    /*@ requires arr != null; */
+    /*@ ensures \result >= -1; */
+    /*@ ensures \result <= arr.length-1; */
+    public static int binarySearch(int[] arr, int key) {
+        if (arr.length == 0) {
+            return -1;
+        } else {
+            int low = 0;
+            int high = arr.length;
+            int mid =  high / 2;
+
+            while (low < high && arr[mid] != key) {
+                __Loop_Invariant_Dummy1(arr, key, low, high, mid);
+                if (arr[mid] < key) {
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
+                mid = low + (high - low) / 2;
+            }
+            if (low >= high) {
+                return -1;
+            }
+            return mid;
+        }
+    }
+
+    /*@ requires arr != null; */
+    /*@ requires low >= 0; */
+    /*@ requires key != arr[mid]; */
+    /*@ requires low < high; */
+    /*@ requires low <= mid; */
+    /*@ requires low < arr.length-1; */
+    /*@ requires high > mid; */
+    /*@ requires high <= arr.length; */
+    /*@ requires mid <= arr.length-1; */
+    /*@ requires arr[high-1] >= arr[mid]; */
+    /*@ ensures \old(key) != arr[\old(mid)]; */
+    /*@ ensures \old(low) < arr.length-1; */
+    /*@ ensures \old(mid) <= arr.length-1; */
+    /*@ ensures arr[\old(high)-1] >= arr[\old(mid)]; */
+    public static void __Loop_Invariant_Dummy1(int[] arr, int key, int low, int high, int mid) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[] arr = new int[]{-2, -1, 0, 1, 2};
+        binarySearch(arr, -2);
+        arr = new int[]{0};
+        binarySearch(arr, 0);
+        arr = new int[]{-1, -2};
+        binarySearch(arr, -1);
+        arr = new int[]{2, 3};
+        binarySearch(arr, 2);
+        arr = new int[]{0, 1};
+        binarySearch(arr, 1);
+        arr = new int[]{-2, 3};
+        binarySearch(arr, -3);
+        arr = new int[]{0, 4};
+        binarySearch(arr, 5);
+        arr = new int[]{-2, -1, 8};
+        binarySearch(arr, 8);
+        arr = new int[]{2, 3};
+        binarySearch(arr, 90);
+        arr = new int[]{0, 1, 213, 703, 713};
+        binarySearch(arr, 703);
+        arr = new int[]{-2, 2, 114, 514, 810, 114514};
+        binarySearch(arr, 810);
+        arr = new int[]{-2, 2, 114, 512, 513, 514, 810, 927, 999, 114514};
+        binarySearch(arr, 114514);
+    }
+}

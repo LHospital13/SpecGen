@@ -1,0 +1,22 @@
+class PowerOfFour {
+    /*@ ensures (\result == true)  ==>  (\old(n) is a power of 2); */
+    public static boolean isPowerOfFour(int n) {
+        return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isPowerOfFour(0);
+        isPowerOfFour(1);
+        isPowerOfFour(2);
+        isPowerOfFour(-1);
+        isPowerOfFour(-2);
+        isPowerOfFour(4);
+        isPowerOfFour(16);
+        isPowerOfFour(25);
+        isPowerOfFour(64);
+    }
+}

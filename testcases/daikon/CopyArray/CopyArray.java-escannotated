@@ -1,0 +1,62 @@
+public class CopyArray {
+ 
+    /*@ requires iBegin >= 0; */
+    /*@ modifies a[*]; */
+    /*@ ensures !(\forall int i; (0 <= i && i <= b.length-1) ==> (b[i] != a[\old(iBegin)])); */
+    public static void copyArray(int[] b, int iBegin, int iEnd, int[] a) {
+        int k = iBegin;
+
+        while (iEnd - k > 0) {
+            __Loop_Invariant_Dummy1(b, iBegin, iEnd, a, k);
+            a[k] = b[k];
+            k = k + 1 ;
+        }
+    }
+
+    /*@ requires b != null; */
+    /*@ requires iBegin >= 0; */
+    /*@ requires a != null; */
+    /*@ requires iBegin < iEnd; */
+    /*@ requires iBegin <= k; */
+    /*@ requires iBegin <= b.length-1; */
+    /*@ requires iBegin <= a.length-1; */
+    /*@ requires iEnd > k; */
+    /*@ requires iEnd <= b.length; */
+    /*@ requires iEnd <= a.length; */
+    /*@ requires k <= b.length-1; */
+    /*@ requires k <= a.length-1; */
+    /*@ requires b.length-1 != a.length; */
+    /*@ ensures \old(iBegin) <= b.length-1; */
+    /*@ ensures \old(iBegin) <= a.length-1; */
+    /*@ ensures \old(k) <= b.length-1; */
+    /*@ ensures \old(k) <= a.length-1; */
+    /*@ ensures b.length-1 != \old(a.length); */
+    public static void __Loop_Invariant_Dummy1(int[] b, int iBegin, int iEnd, int[] a, int k) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main (String[] args) {
+        int[] arr1 = new int[]{-2, -1, 0, 1, 2};
+        int[] arr2 = new int[]{0, 0, 0};
+        copyArray(arr1, 0, 3, arr2);
+        arr1 = new int[]{-2, -1, 0, 1, 2};
+        arr2 = new int[]{0, 0, 0, 0, 0};
+        copyArray(arr1, 0, 0, arr2);
+        arr1 = new int[]{114, 514, -1919, -1919};
+        arr2 = new int[]{114, 514, 1919, 810, 114514};
+        copyArray(arr1, 2, 4, arr2);
+        arr1 = new int[]{-9, 114, 514, 1919, -810, 1987, 9283, 94, 9384};
+        arr2 = new int[]{114, 514, 1919, 810, 114514, 0, 938, 37, 1, 23, -3};
+        copyArray(arr1, 3, 8, arr2);
+        arr1 = new int[]{-9, -114};
+        arr2 = new int[]{114, -514};
+        copyArray(arr1, 1, 2, arr2);
+        arr1 = new int[]{0, 0, 0, 0, 0};
+        arr2 = new int[]{0, 0, 0, 0, 0};
+        copyArray(arr1, 0, 5, arr2);
+    }
+
+}
+

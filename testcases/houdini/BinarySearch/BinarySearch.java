@@ -26,18 +26,24 @@ public class BinarySearch {
 
     public static void __Loop_Invariant_Dummy1(int[] arr, int key, int low, int high, int mid) {}
 
-    public void __HoudiniInvoker() {
+    public static void main(String[] args) {
         int[] arr = new int[]{-2, -1, 0, 1, 2};
         binarySearch(arr, -2);
         arr = new int[]{0};
         binarySearch(arr, 0);
-        arr = new int[]{-2, -1};
+        arr = new int[]{-1, -2};
         binarySearch(arr, -1);
         arr = new int[]{2, 3};
         binarySearch(arr, 2);
         arr = new int[]{0, 1};
         binarySearch(arr, 1);
-        arr = new int[]{-2, -3};
+        arr = new int[]{-2, 3};
         binarySearch(arr, -3);
+        arr = new int[]{0, 4};
+        binarySearch(arr, 5);
+        arr = new int[]{-2, -1, 8};
+        binarySearch(arr, 8);
+        arr = new int[]{2, 3};
+        binarySearch(arr, 90);
     }
 }

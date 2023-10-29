@@ -1,0 +1,51 @@
+class JewelsInStones {
+    /*@ ensures \result >= 0; */
+    public static int numJewelsInStones(String jewels, String stones) {
+        int jewelsCount = 0;
+        int jewelsLength = jewels.length(), stonesLength = stones.length();
+        for (int i = 0; i < stonesLength; i++) {
+            __Loop_Invariant_Dummy1(jewels, stones, jewelsCount, jewelsLength, stonesLength, i);
+            char stone = stones.charAt(i);
+            for (int j = 0; j < jewelsLength; j++) {
+                __Loop_Invariant_Dummy2(jewels, stones, jewelsCount, jewelsLength, stonesLength, i, stone, j);
+                char jewel = jewels.charAt(j);
+                if (stone == jewel) {
+                    jewelsCount++;
+                    break;
+                }
+            }
+        }
+        return jewelsCount;
+    }
+
+    /*@ requires jewels != null; */
+    /*@ requires stones != null; */
+    /*@ requires jewelsCount >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires stonesLength > i; */
+    public static void __Loop_Invariant_Dummy1(String jewels, String stones, int jewelsCount, int jewelsLength, int stonesLength, int i) {}
+
+    /*@ requires jewels != null; */
+    /*@ requires stones != null; */
+    /*@ requires jewelsCount >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    /*@ requires jewelsLength > j; */
+    /*@ requires stonesLength > i; */
+    public static void __Loop_Invariant_Dummy2(String jewels, String stones, int jewelsCount, int jewelsLength, int stonesLength, int i, char stone, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        numJewelsInStones("abcde", "abcdefg");
+        numJewelsInStones("a", "abc");
+        numJewelsInStones("", "");
+        numJewelsInStones("a", "");
+        numJewelsInStones("", "ab");
+        numJewelsInStones("114", "514");
+        numJewelsInStones("114", "114514");
+        numJewelsInStones("114514", "1141919514810");
+    }
+}

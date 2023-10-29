@@ -1,0 +1,62 @@
+class CheckABeforeB {
+    public static boolean checkString(String s) {
+        char[] chars = s.toCharArray();
+        int i = 0;
+        while (i < chars.length && chars[i] == 'a') {
+            __Loop_Invariant_Dummy1(s, chars, i);
+            i++;
+        }
+	    int j = i;
+        while (j < chars.length && chars[j] == 'b') {
+            __Loop_Invariant_Dummy2(s, chars, i, j);
+            j++;
+        }
+        return j == chars.length;
+    }
+
+    /*@ requires s != null; */
+    /*@ requires c != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] == 97 || c[i] == 98)); */
+    /*@ requires i >= 0; */
+    /*@ requires c[i] == 97; */
+    /*@ requires (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] >= c[i])); */
+    /*@ requires i <= c.length-1; */
+    /*@ ensures (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] == 97 || c[i] == 98)); */
+    /*@ ensures c[\old(i)] == 97; */
+    /*@ ensures (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] >= c[\old(i)])); */
+    /*@ ensures \old(i) <= c.length-1; */
+    public static void __Loop_Invariant_Dummy1(String s, char[] c, int i) {}
+
+    /*@ requires c[i] == c[j]; */
+    /*@ requires s != null; */
+    /*@ requires c != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] == 97 || c[i] == 98)); */
+    /*@ requires c[i] == 98; */
+    /*@ requires (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] <= c[i])); */
+    /*@ requires i <= j; */
+    /*@ requires i <= c.length-1; */
+    /*@ requires j <= c.length-1; */
+    /*@ ensures c[\old(i)] == c[\old(j)]; */
+    /*@ ensures c[\old(i)] == \old(c[j]); */
+    /*@ ensures (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] == 97 || c[i] == 98)); */
+    /*@ ensures c[\old(i)] == 98; */
+    /*@ ensures (\forall int i; (0 <= i && i <= c.length-1) ==> (c[i] <= c[\old(i)])); */
+    /*@ ensures \old(i) <= c.length-1; */
+    /*@ ensures \old(j) <= c.length-1; */
+    public static void __Loop_Invariant_Dummy2(String s, char[] c, int i, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        checkString("a");
+        checkString("b");
+        checkString("aabb");
+        checkString("abab");
+        checkString("");
+        checkString("abbbbaaaabbb");
+        checkString("aaaaaaaaaaaabbbbbbbbbb");
+        
+    }
+}

@@ -1,0 +1,37 @@
+class IsSubsequence {
+    public static boolean isSubsequence(String s, String t) {
+        int n = s.length(), m = t.length();
+        int i = 0, j = 0;
+
+        while (i < n && j < m) {
+            __Loop_Invariant_Dummy1(s, t, n, i, j);
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+            }
+            j++;
+        }
+        return i == n;
+    }
+
+    /*@ requires s != null; */
+    /*@ requires t != null; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    /*@ requires n > i; */
+    public static void __Loop_Invariant_Dummy1(String s, String t, int n, int i, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isSubsequence("abcde", "abcdefg");
+        isSubsequence("a", "abc");
+        isSubsequence("", "");
+        isSubsequence("a", "");
+        isSubsequence("", "ab");
+        isSubsequence("114", "514");
+        isSubsequence("114", "114514");
+        isSubsequence("114514", "1141919514810");
+    }
+}

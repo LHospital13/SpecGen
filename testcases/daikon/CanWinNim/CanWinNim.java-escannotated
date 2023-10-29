@@ -1,0 +1,26 @@
+class CanWinNim {
+    public static boolean canWinNim(int n) {
+        return n % 4 != 0;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        canWinNim(-2);
+        canWinNim(-1);
+        canWinNim(0);
+        canWinNim(1);
+        canWinNim(2);
+        canWinNim(3);
+        canWinNim(4);
+        canWinNim(114);
+        canWinNim(514);
+        canWinNim(715);
+        canWinNim(1919);
+        canWinNim(810);
+        canWinNim(16);
+        canWinNim(104);
+    }
+}

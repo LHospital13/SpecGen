@@ -1,0 +1,55 @@
+class UglyNum {
+    public static boolean isUgly(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        int temp = n;
+        int[] factors = {2, 3, 5};
+        for (int i = 0; i < factors.length; i++) {
+            __Loop_Invariant_Dummy1(n, temp, factors, i);
+            int factor = factors[i];
+            while (temp % factor == 0) {
+                temp /= factor;
+            }
+        }
+        return temp == 1;
+    }
+
+    /*@ requires n >= 1; */
+    /*@ requires temp >= 1; */
+    /*@ requires factors != null; */
+    /*@ requires (\forall int i; (0 <= i && i <= factors.length-1) ==> (factors[i] == 2 || factors[i] == 3 || factors[i] == 5)); */
+    /*@ requires (\forall int i, j; (0 <= i && i <= factors.length-1 && 0 <= j && j <= factors.length-1) ==> ((i+1 == j) ==> (factors[i] < factors[j]))); */
+    /*@ requires i == 0 || i == 1 || i == 2; */
+    /*@ requires factors.length == 3; */
+    /*@ requires n % temp == 0; */
+    /*@ requires n >= temp; */
+    /*@ requires i <= factors.length-1; */
+    /*@ ensures (\forall int i; (0 <= i && i <= factors.length-1) ==> (factors[i] == 2 || factors[i] == 3 || factors[i] == 5)); */
+    /*@ ensures (\forall int i, j; (0 <= i && i <= factors.length-1 && 0 <= j && j <= factors.length-1) ==> ((i+1 == j) ==> (factors[i] < factors[j]))); */
+    /*@ ensures \old(i) <= factors.length-1; */
+    public static void __Loop_Invariant_Dummy1(int n, int temp, int[] factors, int i) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isUgly(0);
+        isUgly(1);
+        isUgly(2);
+        isUgly(3);
+        isUgly(15);
+        isUgly(-1);
+        isUgly(-2);
+        isUgly(-3);
+		isUgly(4);
+        isUgly(5);
+        isUgly(7);
+        isUgly(8);
+		isUgly(13);
+		isUgly(17);
+		isUgly(12);
+		isUgly(16);
+    }
+}

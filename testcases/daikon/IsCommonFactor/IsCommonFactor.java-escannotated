@@ -1,0 +1,33 @@
+public class IsCommonFactor {
+    /*@ requires factor >= 1; */
+    /*@ requires b != factor; */
+    /*@ ensures (\result == true)  ==>  (\old(a) % \old(factor) == 0); */
+    /*@ ensures (\result == true)  ==>  (\old(b) % \old(factor) == 0); */
+    /*@ ensures (\result == true)  ==>  (\old(factor) >= 1); */
+    public static boolean isCommonFactor (int a, int b, int factor) {
+        return a % factor == 0 && b % factor == 0;
+    }
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isCommonFactor(-4, 0, 1);
+        isCommonFactor(0, -4, 2);
+        isCommonFactor(4, 0, 5);
+        isCommonFactor(0, 4, 1);
+        isCommonFactor(-4, -4, 2);
+        isCommonFactor(4, 4, 3);
+        isCommonFactor(0, 0, 1);
+        isCommonFactor(-4, 4, 2);
+        isCommonFactor(4, -4, 1);
+        isCommonFactor(1, -1, 1);
+        isCommonFactor(-1, 1, 2);
+        isCommonFactor(114, 514, 2);
+        isCommonFactor(114, 514, 4);
+        isCommonFactor(1919, 810, 2);
+        isCommonFactor(1919, 514, 1);
+        isCommonFactor(16, 64, 16);
+        isCommonFactor(27, 81, 9);
+    }
+}
