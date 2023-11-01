@@ -6,3 +6,4 @@ openjml/
 tmp/*.java
 tmp/houdini_output/
 .vscode
+log/*.csv

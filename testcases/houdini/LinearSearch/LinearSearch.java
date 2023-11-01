@@ -36,13 +36,5 @@ public class LinearSearch {
         linearSearch(arr, 5);
         arr = new int[]{-2, -1, 8};
         linearSearch(arr, 8);
-        arr = new int[]{2, 3};
-        linearSearch(arr, 90);
-        arr = new int[]{0, 1, 213, 703, 713};
-        linearSearch(arr, 703);
-        arr = new int[]{-2, 2, 114, 514, 810, 114514};
-        linearSearch(arr, 810);
-        arr = new int[]{-2, 2, 114, 512, 513, 514, 810, 927, 999, 114514};
-        linearSearch(arr, 114514);
     }
 }
