@@ -9,6 +9,7 @@ public class AddLoop {
                 sum = sum + 1;
                 n = n - 1;
             }
+	    __Loop_Invariant_Dummy1(x, y, n, sum);
         } else {
             int n = -y;
             while (n > 0) {
@@ -16,6 +17,7 @@ public class AddLoop {
                 sum = sum - 1;
                 n = n - 1;
             }
+	    __Loop_Invariant_Dummy2(x, y, n, sum);
         }
         return sum;
     }
@@ -34,13 +36,6 @@ public class AddLoop {
         AddLoop(-1, 1);
         AddLoop(1, 2);
         AddLoop(2, 1);
-        AddLoop(-2, -1);
-        AddLoop(-1, -2);
-        AddLoop(-2, 1);
-        AddLoop(-1, 2);
-        AddLoop(3, -5);
-        AddLoop(-3, 5);
-        AddLoop(3, 5);
     }
 
     public static void __Loop_Invariant_Dummy1(int x, int y, int n, int sum) {}

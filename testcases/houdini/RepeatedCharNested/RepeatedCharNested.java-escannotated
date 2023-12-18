@@ -1,0 +1,43 @@
+public class RepeatedCharNested {
+
+    /*@ ensures \result >= -1; */
+    public static int repeatedCharacter(String s) {
+        for (int i = 0; i < s.length(); ++i) {
+            __Loop_Invariant_Dummy1(s, i);
+            char c1 = s.charAt(i);
+            for (int j = i + 1; j < s.length(); ++j) {
+                __Loop_Invariant_Dummy2(s, i, c1, j);
+                char c2 = s.charAt(j);
+                if(c1 == c2)
+                    return i;
+            }
+        }
+        return -1;
+    }
+
+    /*@ requires s != null; */
+    /*@ requires i >= 0; */
+    public static void __Loop_Invariant_Dummy1(String s, int i) {}
+
+    /*@ requires s != null; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 1; */
+    /*@ requires i < j; */
+    public static void __Loop_Invariant_Dummy2(String s, int i, char c1, int j) {}
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        repeatedCharacter("");
+        repeatedCharacter("a");
+        repeatedCharacter("aabb");
+        repeatedCharacter("ab");
+        repeatedCharacter("qabababc");
+        repeatedCharacter("dagvwhfejrk");
+        repeatedCharacter("dagvwhfejrkv");
+        repeatedCharacter("eeeeer");
+        repeatedCharacter("114514");
+    }
+    
+}

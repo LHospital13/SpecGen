@@ -5,6 +5,7 @@ class PowerOfThree {
             __Loop_Invariant_Dummy1(temp);
             temp /= 3;
         }
+        __Loop_Invariant_Dummy1(temp);
         return temp == 1;
     }
 

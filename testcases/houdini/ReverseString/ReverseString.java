@@ -1,12 +1,14 @@
 class ReverseString {
     public static void reverseString(char[] s) {
         int n = s.length;
-        for (int left = 0, right = n - 1; left < right; ++left, --right) {
+        int left, right;
+        for (left = 0, right = n - 1; left < right; ++left, --right) {
             __Loop_Invariant_Dummy1(s, n, left, right);
             char tmp = s[left];
             s[left] = s[right];
             s[right] = tmp;
         }
+        __Loop_Invariant_Dummy1(s, n, left, right);
     }
 
     public static void __Loop_Invariant_Dummy1(char[] s, int n, int left, int right) {}

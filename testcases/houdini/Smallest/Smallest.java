@@ -13,6 +13,7 @@ public class Smallest {
             }
             index = index + 1;
         }
+        __Loop_Invariant_Dummy1(a, index, smallest);
         return smallest;
     }
 

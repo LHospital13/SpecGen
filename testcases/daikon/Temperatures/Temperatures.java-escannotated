@@ -1,0 +1,23 @@
+class Temperatures {
+    /*@ ensures \result.length == 3; */
+    /*@ ensures !(\forall int i; (0 <= i && i <= \result.length-1) ==> (\result[i] != \old(celsius))); */
+    /*@ ensures (\forall int i; (0 <= i && i <= \result.length-1) ==> (\result[i] >= \old(celsius))); */
+    public static double[] convertTemperature(double celsius) {
+        return new double[]{celsius, celsius + 273.15, celsius * 1.80 + 32.00};
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        convertTemperature(-2);
+        convertTemperature(-1);
+        convertTemperature(0);
+        convertTemperature(1);
+        convertTemperature(2);
+        convertTemperature(3);
+        convertTemperature(5);
+        convertTemperature(114);
+    }
+}

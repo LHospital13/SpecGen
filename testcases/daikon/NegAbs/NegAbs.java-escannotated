@@ -1,0 +1,34 @@
+public class NegAbs {
+	
+	/*@ ensures \result <= \old(num); */
+	public static int negAbs(int num) {
+		if (num < 0)
+			return num;
+		else
+			return -num;
+	}
+	
+	/*@ requires args != null; */
+	/*@ requires \typeof(args) == \type(java.lang.String[]); */
+	/*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+	/*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+	public static void main(String[] args) {
+		negAbs(-4);
+		negAbs(0);
+		negAbs(4);
+		negAbs(-1);
+		negAbs(1);
+		negAbs(2);
+		negAbs(5);
+		negAbs(7);
+		negAbs(12);
+		negAbs(14);
+		negAbs(114);
+		negAbs(-2);
+		negAbs(-5);
+		negAbs(-7);
+		negAbs(-12);
+		negAbs(-14);
+		negAbs(-114);
+	}
+}

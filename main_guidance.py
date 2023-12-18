@@ -23,7 +23,7 @@ def validate_openjml(code_with_spec, classname):
     tmp_file = open(tmp_filename, 'w')
     tmp_file.write(code_with_spec)
     tmp_file.close()
-    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --quiet " + tmp_filename
+    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --quiet --prover=cvc4 " + tmp_filename
     res_lines = os.popen(cmd).readlines()
     res = ""
     for line in res_lines:
@@ -81,34 +81,24 @@ def main():
                 }
             )
         else:
-            err_types = extract_err_type(err_info)
-            if len(err_types) == 0:
-                refine_msg = {
-                    'role': 'user',
-                    'content': FORMAT_REFINE_PROMPT.format(err_info=err_info)
+            refine_msg = {
+                'role': 'user',
+                'content': FORMAT_REFINE_PROMPT.format(err_info=err_info)
+            }
+            refine_msg['content'] += gen_extra_guidance(err_info)
+            config['messages'].append(refine_msg)
+            print_msg(refine_msg)
+            token_limit_fitter(config, 3000)
+            ret = request_chatgpt_engine(config)
+            print("assistant:", ret['choices'][0]['message']['content'])
+            current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
+            current_code = current_code.strip()
+            config['messages'].append(
+                {
+                    'role': 'assistant',
+                    'content': "```\n{code}\n```".format(code=current_code)
                 }
-                refine_msg['content'] += gen_extra_guidance(err_info)
-                config['messages'].append(refine_msg)
-                print_msg(refine_msg)
-                token_limit_fitter(config, 3000)
-                ret = request_chatgpt_engine(config)
-                print("assistant:", ret['choices'][0]['message']['content'])
-                current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
-                current_code = current_code.strip()
-                config['messages'].append(
-                    {
-                        'role': 'assistant',
-                        'content': "```\n{code}\n```".format(code=current_code)
-                    }
-                )
-            else:
-                tmp_config = create_specialized_patcher_prompt_config(current_code, err_info)
-                print_config(tmp_config)
-                ret = request_chatgpt_engine(tmp_config)
-                print("assistant:", ret['choices'][0]['message']['content'])
-                current_code = parse_code_from_reply(ret['choices'][0]['message']['content'])
-                current_code = current_code.strip()
-                config['messages'][-1]['content'] = "```\n{code}\n```".format(code=current_code)
+            )
 
         f_log.write(current_code + "\n")
         err_info = validate_openjml(current_code, classname)

@@ -1,0 +1,87 @@
+public class MulNested {
+    public static int mulNested(int x, int y) {
+        int res = 0, m = x, n = y, sign = 1;
+        if(x < 0){
+            m = -x;
+            sign = -sign;
+        }
+        if(y < 0){
+            n = -y;
+            sign = -sign;
+        }
+        for(int i = 0; i < m; i++) {
+            __Loop_Invariant_Dummy1(x, y, res, m, n, sign, i);
+            for(int j = 0; j < n; j++) {
+                __Loop_Invariant_Dummy2(x, y, res, m, n, sign, i, j);
+                res = res + 1;
+            }
+        }
+        return sign * res;
+    }
+    
+    /*@ requires a != 0; */
+    /*@ requires res >= 0; */
+    /*@ requires m >= 1; */
+    /*@ requires n >= 0; */
+    /*@ requires sign == -1 || sign == 1; */
+    /*@ requires sign != 0; */
+    /*@ requires i >= 0; */
+    /*@ requires a % m == 0; */
+    /*@ requires a <= m; */
+    /*@ requires m % a == 0; */
+    /*@ requires a != i; */
+    /*@ requires b <= n; */
+    /*@ requires m > i; */
+    public static void __Loop_Invariant_Dummy1(int a, int b, int res, int m, int n, int sign, int i) {}
+
+    /*@ requires a != 0; */
+    /*@ requires b != 0; */
+    /*@ requires res >= 0; */
+    /*@ requires sign == -1 || sign == 1; */
+    /*@ requires sign != 0; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    /*@ requires a % m == 0; */
+    /*@ requires a <= m; */
+    /*@ requires m % a == 0; */
+    /*@ requires a != i; */
+    /*@ requires b % n == 0; */
+    /*@ requires b <= n; */
+    /*@ requires n % b == 0; */
+    /*@ requires b != j; */
+    /*@ requires m > i; */
+    /*@ requires n > j; */
+    public static void __Loop_Invariant_Dummy2(int a, int b, int res, int m, int n, int sign, int i, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        mulNested(-4, 0);
+        mulNested(0, -4);
+        mulNested(4, 0);
+        mulNested(0, 4);
+        mulNested(-4, -4);
+        mulNested(4, 4);
+        mulNested(0, 0);
+        mulNested(-4, 4);
+        mulNested(4, -4);
+        mulNested(1, -1);
+        mulNested(-1, 1);
+        mulNested(1, 1);
+        mulNested(2, 1);
+        mulNested(1, 2);
+        mulNested(-2, -1);
+        mulNested(-1, -2);
+        mulNested(-2, 1);
+        mulNested(-1, 2);
+        mulNested(3, -5);
+        mulNested(-3, 5);
+        mulNested(3, 5);
+        mulNested(114, 514);
+        mulNested(-114, 514);
+        mulNested(514, 114);
+        mulNested(-114, -514);
+    }
+}

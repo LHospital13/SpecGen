@@ -1,0 +1,85 @@
+public class TransposeMatrix {
+
+    /*@ requires \typeof(matrix) == \type(int[][]); */
+    /*@ ensures \typeof(\result) == \old(\typeof(matrix)); */
+    /*@ ensures \typeof(\result) == \type(int[][]); */
+    public static int[][] transposeMat(int[][] matrix)
+    {
+        int m, n, p, q;
+        m = matrix.length;
+        n = matrix[0].length;
+        int[][] transpose = new int[n][m];
+
+        for (int c = 0; c < n; c++) {
+            __Loop_Invariant_Dummy1(matrix, m, n, transpose, c);
+            for (int d = 0; d < m; d++) {
+                __Loop_Invariant_Dummy2(matrix, m, n, transpose, c, d);
+                transpose[c][d] = matrix[d][c];
+            }
+
+        }
+        return transpose;
+    }
+
+    /*@ requires \typeof(matrix) == \typeof(transpose); */
+    /*@ requires m == matrix.length; */
+    /*@ requires n == transpose.length; */
+    /*@ requires matrix != null; */
+    /*@ requires \typeof(matrix) == \type(int[][]); */
+    /*@ requires \nonnullelements(matrix); */
+    /*@ requires m >= 2; */
+    /*@ requires transpose != null; */
+    /*@ requires \nonnullelements(transpose); */
+    /*@ requires c >= 0; */
+    /*@ requires c <= transpose.length-1; */
+    /*@ ensures \nonnullelements(matrix); */
+    /*@ ensures \nonnullelements(transpose); */
+    /*@ ensures \old(c) <= transpose.length-1; */
+    public static void __Loop_Invariant_Dummy1(int[][] matrix, int m, int n, int[][] transpose, int c) {}
+    
+    /*@ requires \typeof(matrix) == \typeof(transpose); */
+    /*@ requires m == matrix.length; */
+    /*@ requires n == transpose.length; */
+    /*@ requires matrix != null; */
+    /*@ requires \typeof(matrix) == \type(int[][]); */
+    /*@ requires \nonnullelements(matrix); */
+    /*@ requires m >= 2; */
+    /*@ requires transpose != null; */
+    /*@ requires \nonnullelements(transpose); */
+    /*@ requires c >= 0; */
+    /*@ requires d >= 0; */
+    /*@ requires c <= transpose.length-1; */
+    /*@ requires d <= matrix.length-1; */
+    /*@ ensures \nonnullelements(matrix); */
+    /*@ ensures \nonnullelements(transpose); */
+    /*@ ensures \old(c) <= transpose.length-1; */
+    /*@ ensures \old(d) <= matrix.length-1; */
+    public static void __Loop_Invariant_Dummy2(int[][] matrix, int m, int n, int[][] transpose, int c, int d) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int[][] matrix = new int[][] {{}};
+        transposeMat(matrix);
+        matrix = new int[][] {{0, 0}, {0, 0}};
+        transposeMat(matrix);
+        matrix = new int[][] {{0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        transposeMat(matrix);
+        matrix = new int[][] {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
+        transposeMat(matrix);
+        matrix = new int[][] {{1}, {2, 3}};
+        transposeMat(matrix);
+        matrix = new int[][] {{114, 514}, {1919, 810}};
+        transposeMat(matrix);
+        matrix = new int[][] {{1, 0, 1}, {0, 1, 0}, {2, 3, 3}};
+        transposeMat(matrix);
+        matrix = new int[][] {{1, 0, 1, 0}, {19, 19, 8, 10}};
+        transposeMat(matrix);
+        matrix = new int[][] {{1, 0, 1, 0}, {19, 19, 8, 10}, {11, 4, 51, 4}, {0, 0, 0, 0}, {1, 2, 3, 4}};
+        transposeMat(matrix);
+    }
+}
+
+

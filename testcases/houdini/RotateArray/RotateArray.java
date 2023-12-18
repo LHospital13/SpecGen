@@ -6,10 +6,12 @@ class RotateArray {
             k = k + n;
         }
         int[] newArr = new int[n];
-        for (int i = 0; i < n; ++i) {
+        int i = 0;
+        for (i = 0; i < n; ++i) {
             __Loop_Invariant_Dummy1(nums, k, n, newArr, i);
             newArr[(i + k) % n] = nums[i];
         }
+        __Loop_Invariant_Dummy1(nums, k, n, newArr, i);
         System.arraycopy(newArr, 0, nums, 0, n);
     }
 

@@ -2,10 +2,12 @@ class JewelsInStones {
     public static int numJewelsInStones(String jewels, String stones) {
         int jewelsCount = 0;
         int jewelsLength = jewels.length(), stonesLength = stones.length();
-        for (int i = 0; i < stonesLength; i++) {
+        int i = 0;
+        for (i = 0; i < stonesLength; i++) {
             __Loop_Invariant_Dummy1(jewels, stones, jewelsCount, jewelsLength, stonesLength, i);
             char stone = stones.charAt(i);
-            for (int j = 0; j < jewelsLength; j++) {
+            int j = 0;
+            for (j = 0; j < jewelsLength; j++) {
                 __Loop_Invariant_Dummy2(jewels, stones, jewelsCount, jewelsLength, stonesLength, i, stone, j);
                 char jewel = jewels.charAt(j);
                 if (stone == jewel) {
@@ -13,7 +15,9 @@ class JewelsInStones {
                     break;
                 }
             }
+            __Loop_Invariant_Dummy2(jewels, stones, jewelsCount, jewelsLength, stonesLength, i, stone, j);
         }
+        __Loop_Invariant_Dummy1(jewels, stones, jewelsCount, jewelsLength, stonesLength, i);
         return jewelsCount;
     }
 

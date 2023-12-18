@@ -9,6 +9,7 @@ public class IsPrefix {
                 return false;
             i = i + 1;
         }
+        __Loop_Invariant_Dummy1(pat, txt, i);
 
         return true;
     }

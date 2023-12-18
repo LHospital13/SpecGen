@@ -11,6 +11,7 @@ class MySqrt {
                 r = mid - 1;
             }
         }
+        __Loop_Invariant_Dummy1(x, l, r, ans);
         return ans;
     }
 

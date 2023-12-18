@@ -4,13 +4,14 @@ class CompareArray {
         if(a.length != b.length) {
 	        return false;
         }
-
-        for(int i = 0; i < a.length; i++) {
+        int i = 0;
+        for(i = 0; i < a.length; i++) {
             __Loop_Invariant_Dummy1(a, b, i);
             if(a[i] != b[i]) {
                 return false;
             }
         }
+        __Loop_Invariant_Dummy1(a, b, i);
 
         return true;
     }

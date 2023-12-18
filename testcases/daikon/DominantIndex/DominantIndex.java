@@ -1,24 +1,26 @@
 class DominantIndex {
     
     public static int dominantIndex(int[] nums) {
-        int m1 = -1, m2 = -1;
-        int index = -1;
+        int biggest_index = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            __Loop_Invariant_Dummy1(nums, m1, m2, index, i);
-            if (nums[i] > m1) {
-                m2 = m1;
-                m1 = nums[i];
-                index = i;
-            } else if (nums[i] > m2) {
-                m2 = nums[i];
-            }
+            __Loop_Invariant_Dummy1(nums, biggest_index, i);
+            if (nums[i] > nums[biggest_index])
+                biggest_index = i;
         }
 
-        return m1 >= m2 * 2 ? index : -1;
+        for (int i = 0; i < nums.length; i++) {
+            __Loop_Invariant_Dummy2(nums, biggest_index, i);
+            if (i != biggest_index && 2 * nums[i] > nums[biggest_index])
+                return -1;
+        }
+
+        return biggest_index;
     }
 
-    public static void __Loop_Invariant_Dummy1(int[] nums, int m1, int m2, int index, int i) {}
+    public static void __Loop_Invariant_Dummy1(int[] nums, int biggest_index, int i) {}
+
+    public static void __Loop_Invariant_Dummy2(int[] nums, int biggest_index, int i) {}
 
     public static void main(String[] args) {
         int[] arr = new int[]{-2, -1, 0, 1, 2};
@@ -28,6 +30,14 @@ class DominantIndex {
         arr = new int[]{-2, -1};
         dominantIndex(arr);
         arr = new int[]{2, 3};
+        dominantIndex(arr);
+        arr = new int[]{2, 3, 114};
+        dominantIndex(arr);
+        arr = new int[]{2, 3, 4};
+        dominantIndex(arr);
+        arr = new int[]{3, 4, 5, 6};
+        dominantIndex(arr);
+        arr = new int[]{3, 4, 5, 6, 10, 11};
         dominantIndex(arr);
         arr = new int[]{0, 1, 10};
         dominantIndex(arr);

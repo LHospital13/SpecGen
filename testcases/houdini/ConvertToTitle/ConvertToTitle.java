@@ -7,6 +7,7 @@ class ConvertToTitle {
             sb.append((char)(a0 - 1 + 'A'));
             columnNumber = (columnNumber - a0) / 26;
         }
+        __Loop_Invariant_Dummy1(columnNumber, sb);
         return sb.reverse().toString();
     }
 

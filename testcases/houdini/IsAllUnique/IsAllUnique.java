@@ -5,7 +5,8 @@ class IsAllUnique {
             return false;
         }
         int num = 0;
-        for (int i = 0; i < len; i++) {
+        int i = 0;
+        for (i = 0; i < len; i++) {
             __Loop_Invariant_Dummy1(str, len, num, i);
             char c = str.charAt(i);
             int index = c - 'a';
@@ -15,6 +16,7 @@ class IsAllUnique {
                 num |= (1 << index);
             }
         }
+        __Loop_Invariant_Dummy1(str, len, num, i);
         return true;
     }
 

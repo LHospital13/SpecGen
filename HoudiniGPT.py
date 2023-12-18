@@ -24,7 +24,7 @@ def validate_openjml(code_with_spec, classname):
     tmp_file = open(tmp_filename, 'w')
     tmp_file.write(code_with_spec)
     tmp_file.close()
-    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --nonnull-by-default --quiet -nowarn " + tmp_filename
+    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --nonnull-by-default --quiet -nowarn --prover=cvc4 " + tmp_filename
     res_lines = os.popen(cmd).readlines()
     res = ""
     for line in res_lines:
@@ -238,6 +238,9 @@ def main():
                 mutated_spec_list.append({"content": mutated_spec, "index": index})
     while True:
         if err_info == "":
+            break
+        if not is_invariant_or_postcondition(err_info):
+            print("Unexpected verification error. Aborted.")
             break
         refuted_lineno_list = extract_lineno_from_err_info(err_info)
         # replace each error spec with mutated spec

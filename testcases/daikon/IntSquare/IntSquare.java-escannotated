@@ -1,0 +1,40 @@
+public class IntSquare {
+
+    public static int squareOf(int x) {
+        if(x < 0)
+            x = -x;
+        int res = 0;
+        for(int i = 0; i < x; i++) {
+            __Loop_Invariant_Dummy1(x, res, i);
+            for(int j = 0; j < x; j++) {
+                __Loop_Invariant_Dummy2(x, res, i, j);
+                res = res + 1;
+            }
+        }
+        return res;
+    }
+
+    /*@ requires res >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires x > i; */
+    public static void __Loop_Invariant_Dummy1(int x, int res, int i) {}
+    /*@ requires res >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    /*@ requires x > i; */
+    /*@ requires x > j; */
+    public static void __Loop_Invariant_Dummy2(int x, int res, int i, int j) {}
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        squareOf(-5);
+        squareOf(-3);
+        squareOf(0);
+        squareOf(1);
+        squareOf(2);
+        squareOf(3);
+        squareOf(14);
+    }
+}

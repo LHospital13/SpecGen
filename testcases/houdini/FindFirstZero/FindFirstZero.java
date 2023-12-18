@@ -11,6 +11,7 @@ public class FindFirstZero {
                 __Loop_Invariant_Dummy1(x, index);
 				index = index + 1;
 			}
+            __Loop_Invariant_Dummy1(x, index);
 			if (x.length - index == 0) {
 				index = -1;
 			}
@@ -38,12 +39,6 @@ public class FindFirstZero {
         arr = new int[]{-2, -1, 8};
         FindFirstZero(arr);
         arr = new int[]{2};
-        FindFirstZero(arr);
-        arr = new int[]{0, 1, 213, 703, 713, -32};
-        FindFirstZero(arr);
-        arr = new int[]{-2, 2, 114, 514, 810, 114514};
-        FindFirstZero(arr);
-        arr = new int[]{114, 512, 513, 514, 810, 927, 999, 0, 114514};
         FindFirstZero(arr);
     }
 }

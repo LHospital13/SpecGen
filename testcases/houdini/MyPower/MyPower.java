@@ -1,10 +1,12 @@
 class MyPower {
     public static int power(int x, int n) {
         int res = 1;
-        for(int i = 0; i < n; i++) {
+        int i;
+        for(i = 0; i < n; i++) {
             __Loop_Invariant_Dummy1(x, n, res, i);
 	        res = res * x;
         }
+        __Loop_Invariant_Dummy1(x, n, res, i);
         return res;
     }
 

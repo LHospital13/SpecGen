@@ -1,0 +1,22 @@
+public class ReLUSeq {
+    /*@ ensures \result >= \old(x); */
+    public static double computeReLU(double x) {
+        return ((x >= 0) ? x : 0);
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        computeReLU(-5);
+        computeReLU(-4.4);
+        computeReLU(-3.8);
+        computeReLU(-2);
+        computeReLU(-1);
+        computeReLU(0);
+        computeReLU(1);
+        computeReLU(2);
+        computeReLU(3.14);
+    }
+}

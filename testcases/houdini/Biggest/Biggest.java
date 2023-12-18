@@ -13,6 +13,7 @@ public class Biggest {
             }
             index = index + 1;
         }
+	__Loop_Invariant_Dummy1(a, index, biggest);
         return biggest;
     }
 
@@ -34,6 +35,12 @@ public class Biggest {
         arr = new int[]{0, 4};
         biggest(arr);
         arr = new int[]{-2, -1, 8};
+        biggest(arr);
+        arr = new int[]{2, 3};
+        biggest(arr);
+        arr = new int[]{0, 1};
+        biggest(arr);
+        arr = new int[]{-2, -3, 2, 114, 514, 810, 114514};
         biggest(arr);
     }
 }

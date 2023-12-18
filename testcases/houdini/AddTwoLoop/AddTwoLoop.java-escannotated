@@ -1,0 +1,70 @@
+public class AddTwoLoop {
+    public static int addLoop(int a, int b) {
+        int m = ((a < 0) ? -a : a);
+        int n = ((b < 0) ? -b : b);
+        int res = 0;
+        for(int i = 0; i < m; i++){
+            __Loop_Invariant_Dummy1(a,b,m,n,i,res);
+            res = res + ((a < 0) ? -1 : 1);
+        }
+        for(int i = 0; i < n; i++){
+            __Loop_Invariant_Dummy2(a,b,m,n,i,res);
+            res = res + ((b < 0) ? -1 : 1);
+        }
+        return res;
+    }
+
+    /*@ requires a != 0; */
+    /*@ requires m >= 1; */
+    /*@ requires n >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires a % m == 0; */
+    /*@ requires a <= m; */
+    /*@ requires m % a == 0; */
+    /*@ requires a != i; */
+    /*@ requires b <= n; */
+    /*@ requires m > i; */
+    public static void __Loop_Invariant_Dummy1(int a, int b, int m, int n, int i, int res) {}
+    
+    /*@ requires b != 0; */
+    /*@ requires m >= 0; */
+    /*@ requires i >= 0; */
+    /*@ requires a <= m; */
+    /*@ requires b % n == 0; */
+    /*@ requires b <= n; */
+    /*@ requires n % b == 0; */
+    /*@ requires b != i; */
+    /*@ requires n > i; */
+    public static void __Loop_Invariant_Dummy2(int a, int b, int m, int n, int i, int res) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        addLoop(-4, 0);
+        addLoop(0, -4);
+        addLoop(4, 0);
+        addLoop(0, 4);
+        addLoop(-4, -4);
+        addLoop(4, 4);
+        addLoop(0, 0);
+        addLoop(-4, 4);
+        addLoop(4, -4);
+        addLoop(1, -1);
+        addLoop(-1, 1);
+        addLoop(1, 2);
+        addLoop(2, 1);
+        addLoop(-2, -1);
+        addLoop(-1, -2);
+        addLoop(-2, 1);
+        addLoop(-1, 2);
+        addLoop(3, -5);
+        addLoop(-3, 5);
+        addLoop(3, 5);
+        addLoop(114, 514);
+        addLoop(-114, 514);
+        addLoop(514, 114);
+        addLoop(-114, -514);
+    }
+}

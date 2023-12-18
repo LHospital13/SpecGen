@@ -5,13 +5,14 @@ public class ContainsDuplicate {
     public static boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
-
-        for (int i = 0; i < n - 1; i++) {
+        int i = 0;
+        for (i = 0; i < n - 1; i++) {
             __Loop_Invariant_Dummy1(nums, n, i);
             if (nums[i] == nums[i + 1]) {
                 return true;
             }
         }
+        __Loop_Invariant_Dummy1(nums, n, i);
         return false;
     }
 

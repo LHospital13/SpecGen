@@ -17,6 +17,7 @@ public class BinarySearch {
                 }
                 mid = low + (high - low) / 2;
             }
+	        __Loop_Invariant_Dummy1(arr, key, low, high, mid);
             if (low >= high) {
                 return -1;
             }
@@ -45,5 +46,11 @@ public class BinarySearch {
         binarySearch(arr, 8);
         arr = new int[]{2, 3};
         binarySearch(arr, 90);
+        arr = new int[]{0, 1, 213, 703, 713};
+        binarySearch(arr, 703);
+        arr = new int[]{-2, 2, 114, 514, 810, 114514};
+        binarySearch(arr, 810);
+        arr = new int[]{-2, 2, 114, 512, 513, 514, 810, 927, 999, 114514};
+        binarySearch(arr, 114514);
     }
 }

@@ -10,6 +10,7 @@ class IsSubsequence {
             }
             j++;
         }
+        __Loop_Invariant_Dummy1(s, t, n, i, j);
         return i == n;
     }
 

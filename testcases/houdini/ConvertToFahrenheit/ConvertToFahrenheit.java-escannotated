@@ -1,0 +1,21 @@
+class ConvertToFahrenheit {
+    /*@ ensures 4.22212465065984E14 * \result - 4.22212465065984E14 * \old(celsius) - 1.3510798882111488E16 == 0; */
+    public static double convertTemperature(double celsius) {
+        return celsius * 1.80 + 32.00;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        convertTemperature(-2);
+        convertTemperature(-1);
+        convertTemperature(0);
+        convertTemperature(1);
+        convertTemperature(2);
+        convertTemperature(3);
+        convertTemperature(5);
+        convertTemperature(114);
+    }
+}

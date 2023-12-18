@@ -4,6 +4,7 @@ public class AddLoop {
         int sum = x;
         if (y > 0) {
             int n = y;
+	    __Loop_Invariant_Dummy1(x, y, n, sum);
             while (n > 0) {
                 __Loop_Invariant_Dummy1(x, y, n, sum);
                 sum = sum + 1;
@@ -11,6 +12,7 @@ public class AddLoop {
             }
         } else {
             int n = -y;
+	    __Loop_Invariant_Dummy2(x, y, n, sum);
             while (n > 0) {
                 __Loop_Invariant_Dummy2(x, y, n, sum);
                 sum = sum - 1;

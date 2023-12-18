@@ -1,0 +1,24 @@
+public class DivisorGame {
+    public static boolean divisorGame(int n) {
+        return n % 2 == 0;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        divisorGame(-5);
+        divisorGame(-4);
+        divisorGame(-3);
+        divisorGame(-2);
+        divisorGame(-1);
+        divisorGame(0);
+        divisorGame(1);
+        divisorGame(2);
+        divisorGame(3);
+        divisorGame(4);
+        divisorGame(114);
+        divisorGame(1919);
+    }
+}

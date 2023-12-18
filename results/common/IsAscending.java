@@ -1,6 +1,5 @@
 public class IsAscending {
     //@ requires arr != null;
-    //@ ensures \result == true || \result == false;
     //@ ensures (\forall int i; 0 <= i && i < arr.length-1; arr[i] < arr[i+1]) ==> \result == true;
     //@ ensures !(\forall int i; 0 <= i && i < arr.length-1; arr[i] < arr[i+1]) ==> \result == false;
     public boolean isAscending (int[] arr) {

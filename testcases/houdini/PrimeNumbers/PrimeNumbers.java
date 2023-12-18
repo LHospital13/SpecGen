@@ -20,6 +20,7 @@ public class PrimeNumbers{
                               break;
                         }
                   }
+                  __Loop_Invariant_Dummy2(n, status, num, count, j, primeArray);
 
                   if (status != 0)
                   {  
@@ -30,6 +31,7 @@ public class PrimeNumbers{
 
                   num++;
             } 
+            __Loop_Invariant_Dummy1(n, status, num, count, primeArray);
             return primeArray; 
       }
 

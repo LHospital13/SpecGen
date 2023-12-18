@@ -8,8 +8,10 @@ class DigitRoot {
                 sum += num % 10;
                 num /= 10;
             }
+            __Loop_Invariant_Dummy2(num, sum);
             num = sum;
         }
+        __Loop_Invariant_Dummy1(num);
         return num;
     }
 

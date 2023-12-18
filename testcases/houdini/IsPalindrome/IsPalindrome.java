@@ -1,13 +1,14 @@
 class IsPalindrome {
     public static boolean isPalindrome(String s) {
         int n = s.length();
-
-        for(int i = 0; i < s.length(); i++) {
+        int i = 0;
+        for(i = 0; i < s.length(); i++) {
             __Loop_Invariant_Dummy1(s, n, i);
             if(s.charAt(i) != s.charAt(n - 1 - i)) {
                 return false;
             }
         }
+        __Loop_Invariant_Dummy1(s, n, i);
 
         return true;
     }
@@ -22,7 +23,9 @@ class IsPalindrome {
         isPalindrome("");
         isPalindrome("a");
         isPalindrome("aabb");
+	isPalindrome("abba");
         isPalindrome("ab");
+        isPalindrome("cc");
         isPalindrome("114514");
         isPalindrome("qabbaq");
         isPalindrome("dagvwwvgad");

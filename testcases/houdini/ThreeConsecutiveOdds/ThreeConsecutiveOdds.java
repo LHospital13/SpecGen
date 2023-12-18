@@ -5,12 +5,14 @@ public class ThreeConsecutiveOdds {
         if (n < 3) {
             return false;
         }
-        for (int i = 0; i <= n - 3; ++i) {
+        int i;
+        for (i = 0; i <= n - 3; ++i) {
             __Loop_Invariant_Dummy1(arr, n, i);
             if ((arr[i] & 1) != 0 && (arr[i + 1] & 1) != 0 && (arr[i + 2] & 1) != 0) {
                 return true;
             }
         }
+        __Loop_Invariant_Dummy1(arr, n, i);
         return false;
     }
 

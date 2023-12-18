@@ -1,0 +1,44 @@
+public class UniqueCharNested {
+
+    public static int uniqueChar(String s) {
+        for (int i = 0; i < s.length(); ++i) {
+            __Loop_Invariant_Dummy1(s, i);
+            int j = 0;
+            while(j < s.length()) {
+                __Loop_Invariant_Dummy2(s, i, j);
+                if(i != j && s.charAt(i) == s.charAt(j))
+                    break;
+                j++;
+            }
+            if(j == s.length())
+                return i;
+        }
+        return -1;
+    }
+
+    /*@ requires s != null; */
+    /*@ requires i >= 0; */
+    public static void __Loop_Invariant_Dummy1(String s, int i) {}
+
+    /*@ requires s != null; */
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    public static void __Loop_Invariant_Dummy2(String s, int i, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        uniqueChar("");
+        uniqueChar("a");
+        uniqueChar("aabb");
+        uniqueChar("ab");
+        uniqueChar("qabababc");
+        uniqueChar("dagvwhfejrk");
+        uniqueChar("dagvwhfejrkv");
+        uniqueChar("eeeeer");
+        uniqueChar("114514");
+    }
+    
+}

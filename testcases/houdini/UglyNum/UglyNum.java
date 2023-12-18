@@ -5,13 +5,15 @@ class UglyNum {
         }
         int temp = n;
         int[] factors = {2, 3, 5};
-        for (int i = 0; i < factors.length; i++) {
+        int i = 0;
+        for (i = 0; i < factors.length; i++) {
             __Loop_Invariant_Dummy1(n, temp, factors, i);
             int factor = factors[i];
             while (temp % factor == 0) {
                 temp /= factor;
             }
         }
+        __Loop_Invariant_Dummy1(n, temp, factors, i);
         return temp == 1;
     }
 

@@ -24,7 +24,7 @@ def validate_openjml(code_with_spec, classname):
     tmp_file = open(tmp_filename, 'w')
     tmp_file.write(code_with_spec)
     tmp_file.close()
-    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --quiet " + tmp_filename
+    cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --quiet --prover=cvc4 " + tmp_filename
     res_lines = os.popen(cmd).readlines()
     res = ""
     for line in res_lines:

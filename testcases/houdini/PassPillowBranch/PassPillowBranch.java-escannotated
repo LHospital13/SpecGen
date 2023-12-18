@@ -1,0 +1,34 @@
+class PassPillowBranch {
+    /*@ ensures (time < \old(n))  ==>  (\old(n) >= 2); */
+    /*@ ensures (time < \old(n))  ==>  (\result >= 1); */
+    /*@ ensures (time < \old(n))  ==>  (time != \old(time)); */
+    /*@ ensures (time < \old(n))  ==>  (time - \result + 1 == 0); */
+    /*@ ensures \result <= \old(n); */
+    public static int passPillow(int n, int time) {
+        time = time % (n - 1) * 2;
+        if (time < n) {
+            return time + 1;
+        }
+        return n * 2 - time - 1;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        passPillow(0, 0);
+        passPillow(2, 1);
+        passPillow(2, 2);
+        passPillow(2, 3);
+        passPillow(3, 1);
+        passPillow(3, 2);
+        passPillow(3, 3);
+        passPillow(3, 114);
+        passPillow(4, 3);
+        passPillow(114, 514);
+        passPillow(1919, 810);
+        passPillow(1919, 811);
+        passPillow(1622, 1621);
+    }
+}

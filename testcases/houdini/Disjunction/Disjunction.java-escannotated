@@ -1,0 +1,22 @@
+public class Disjunction {
+    /*@ ensures (\result == false)  ==>  (\old(b1) == false); */
+    /*@ ensures (\result == false)  ==>  (\old(b2) == false); */
+    public static boolean disjunctOf(boolean b1, boolean b2) {
+        if(b1 == true)
+            return true;
+        if(b2 == true)
+            return true;
+        return false;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        disjunctOf(true, true);
+        disjunctOf(true, false);
+        disjunctOf(false, true);
+        disjunctOf(false, false);
+    }
+}

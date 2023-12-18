@@ -1,0 +1,23 @@
+public class IsCommonMultiple {
+    /*@ ensures (\result == true)  ==>  (\old(m) % \old(a) == 0); */
+    /*@ ensures (\result == true)  ==>  (\old(m) % \old(b) == 0); */
+    public static boolean isCommonMultiple (int a, int b, int m) {
+        return m % a == 0 && m % b == 0;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        isCommonMultiple(1, 1, 1);
+        isCommonMultiple(-1, -1, -1);
+        isCommonMultiple(2, 3, 1);
+        isCommonMultiple(6, 1, 6);
+        isCommonMultiple(2, 114, 228);
+        isCommonMultiple(3, 5, 7);
+        isCommonMultiple(-5, -6, -30);
+        isCommonMultiple(8, 9, 46);
+        isCommonMultiple(7, 10, 49);
+    }
+}

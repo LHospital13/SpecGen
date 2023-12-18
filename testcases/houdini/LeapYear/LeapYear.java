@@ -22,10 +22,6 @@ public class LeapYear {
     }
 
     public static void main(String[] args) {
-        isLeapYear(-4);
-        isLeapYear(-3);
-        isLeapYear(-2);
-        isLeapYear(-1);
         isLeapYear(0);
         isLeapYear(1);
         isLeapYear(2);

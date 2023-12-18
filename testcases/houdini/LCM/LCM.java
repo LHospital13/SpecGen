@@ -21,6 +21,7 @@ public class LCM {
             }
             result++;
         }
+        __Loop_Invariant_Dummy1(num1, num2, result);
 
         if (result % num1 == 0 && result % num2 == 0) {
             return result;

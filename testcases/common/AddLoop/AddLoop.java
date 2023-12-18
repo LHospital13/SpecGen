@@ -1,5 +1,4 @@
 public class AddLoop {
-
     public static int AddLoop(int x, int y) {
         int sum = x;
         if (y > 0) {
@@ -17,5 +16,4 @@ public class AddLoop {
         }
         return sum;
     }
-    
 }

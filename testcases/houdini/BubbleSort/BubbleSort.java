@@ -9,16 +9,19 @@ public class BubbleSort {
 
     public static int[] bubbleSort(int arr[]) {
         int n = arr.length;
-
-        for (int i = 0; i < n-1; i++) {	
+        int i = 0;
+        for (i = 0; i < n-1; i++) {	
             __Loop_Invariant_Dummy1(arr, n, i);
-            for (int j = 0; j < n-i-1; j++) {
+            int j = 0;
+            for (j = 0; j < n-i-1; j++) {
                 __Loop_Invariant_Dummy2(arr, n, i, j);
                 if (arr[j+1] < arr[j]) {  
 		            swap(j, j + 1, arr); 
                 } 
 	        }
-	    } 
+            __Loop_Invariant_Dummy2(arr, n, i, j);
+	    }
+        __Loop_Invariant_Dummy1(arr, n, i);
 	    return arr;
     }
 

@@ -4,11 +4,13 @@ public class IsDescending {
         if (n < 2) {
             return true;
         }
-        for (int i = 0; i < n-1 ; i++) {
+        int i = 0;
+        for (i = 0; i < n-1 ; i++) {
             __Loop_Invariant_Dummy1(arr, n, i);
             if(arr[i] <= arr[i+1])
                 return false;
         }
+        __Loop_Invariant_Dummy1(arr, n, i);
         return true;
     }
 

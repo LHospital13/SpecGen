@@ -1,0 +1,39 @@
+public class MatrixAdd {
+    
+    /*@ requires \typeof(a) == \typeof(b); */
+    /*@ requires a != null; */
+    /*@ requires \typeof(a) == \type(int[][]); */
+    /*@ requires (a.length == 2) && ((\forall int i; (0 <= i && i <= a.length-1) ==> (a[i] != null))); */
+    /*@ requires b != null; */
+    /*@ requires (b.length == 2) && ((\forall int i; (0 <= i && i <= b.length-1) ==> (b[i] != null))); */
+    /*@ requires a.length == 2; */
+    /*@ requires b.length == 2; */
+    /*@ ensures \typeof(\result) == \old(\typeof(a)); */
+    /*@ ensures \typeof(\result) == \old(\typeof(b)); */
+    /*@ ensures (a.length == 2) && ((\forall int i; (0 <= i && i <= a.length-1) ==> (a[i] != null))); */
+    /*@ ensures (b.length == 2) && ((\forall int i; (0 <= i && i <= b.length-1) ==> (b[i] != null))); */
+    /*@ ensures \result != null; */
+    /*@ ensures \typeof(\result) == \type(int[][]); */
+    /*@ ensures (\result.length == 2) && ((\forall int i; (0 <= i && i <= \result.length-1) ==> (\result[i] != null))); */
+    /*@ ensures \result.length == 2; */
+    public static int[][] add(int[][] a, int[][] b) {
+        int[][] c = new int[2][2];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = a[i][j] + b[i][j];
+            }
+        }
+        return c;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        int a[][] = {{-2, -1}, {0, 1}};
+        int b[][] = {{-2, -1}, {0, 1}};
+        add(a, b);
+    }
+
+}

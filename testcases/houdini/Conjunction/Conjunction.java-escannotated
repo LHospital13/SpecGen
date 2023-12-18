@@ -1,0 +1,22 @@
+public class Conjunction {
+    /*@ ensures (\result == true)  ==>  (\old(b1) == true); */
+    /*@ ensures (\result == true)  ==>  (\old(b2) == true); */
+    public static boolean conjunctOf(boolean b1, boolean b2) {
+        if(b1 == false)
+            return false;
+        if(b2 == false)
+            return false;
+        return true;
+    }
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        conjunctOf(true, true);
+        conjunctOf(true, false);
+        conjunctOf(false, true);
+        conjunctOf(false, false);
+    }
+}

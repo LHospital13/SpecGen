@@ -14,7 +14,7 @@ public class Fibonacci {
 			fib[index] = fib[index - 2] + fib[index - 1];
 			index++;         
 		}
-
+		__Loop_Invariant_Dummy1(n, fib, index);
 		return fib[n];
 	}
 

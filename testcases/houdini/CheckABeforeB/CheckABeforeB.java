@@ -6,11 +6,13 @@ class CheckABeforeB {
             __Loop_Invariant_Dummy1(s, chars, i);
             i++;
         }
+        __Loop_Invariant_Dummy1(s, chars, i);
 	    int j = i;
         while (j < chars.length && chars[j] == 'b') {
             __Loop_Invariant_Dummy2(s, chars, i, j);
             j++;
         }
+        __Loop_Invariant_Dummy2(s, chars, i, j);
         return j == chars.length;
     }
 

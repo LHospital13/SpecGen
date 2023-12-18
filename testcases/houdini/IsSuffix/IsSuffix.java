@@ -12,6 +12,7 @@ public class IsSuffix {
             i = i - 1;
             j = j - 1;
         }
+        __Loop_Invariant_Dummy1(pat, txt, i, j);
 
         return true;
     }
@@ -24,6 +25,7 @@ public class IsSuffix {
         isSuffix("", "");
         isSuffix("a", "");
         isSuffix("", "ab");
+	isSuffix("114", "114");
         isSuffix("114", "514");
         isSuffix("114", "114514");
         isSuffix("114514", "1141919514810");

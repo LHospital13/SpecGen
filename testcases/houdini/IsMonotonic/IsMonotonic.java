@@ -2,7 +2,8 @@ class IsMonotonic {
     public static boolean isMonotonic(int[] nums) {
         boolean inc = true, dec = true;
         int n = nums.length;
-        for (int i = 0; i < n - 1; ++i) {
+        int i = 0;
+        for (i = 0; i < n - 1; ++i) {
             __Loop_Invariant_Dummy1(nums, inc, dec, n, i);
             if (nums[i] > nums[i + 1]) {
                 inc = false;
@@ -11,6 +12,7 @@ class IsMonotonic {
                 dec = false;
             }
         }
+        __Loop_Invariant_Dummy1(nums, inc, dec, n, i);
         return inc || dec;
     }
 

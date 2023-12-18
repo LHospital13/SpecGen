@@ -14,6 +14,11 @@ public class IsCommonFactor {
         isCommonFactor(4, -4, 1);
         isCommonFactor(1, -1, 1);
         isCommonFactor(-1, 1, 2);
-        isCommonFactor(-1, 1, 1);
+        isCommonFactor(114, 514, 2);
+        isCommonFactor(114, 514, 4);
+        isCommonFactor(1919, 810, 2);
+        isCommonFactor(1919, 514, 1);
+        isCommonFactor(16, 64, 16);
+        isCommonFactor(27, 81, 9);
     }
 }

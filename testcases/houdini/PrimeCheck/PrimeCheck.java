@@ -10,6 +10,7 @@ class PrimeCheck {
 				return false;
 			i++;
 		}
+		__Loop_Invariant_Dummy1(a, i, mid);
 		return true;
 	}
 

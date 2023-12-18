@@ -8,6 +8,7 @@ public class SetZero {
             a[k] = 0;
             k = k + 1 ;
         }
+        __Loop_Invariant_Dummy1(a, iBegin, iEnd, k);
 	}
 
     public static void __Loop_Invariant_Dummy1(int[] a, int iBegin, int iEnd, int k) {}

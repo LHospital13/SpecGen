@@ -5,6 +5,7 @@ class IsOneBitCharacter {
             __Loop_Invariant_Dummy1(bits, n, i);
             i += bits[i] + 1;
         }
+        __Loop_Invariant_Dummy1(bits, n, i);
         return i == n - 1;
     }
 

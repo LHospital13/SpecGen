@@ -1,0 +1,28 @@
+public class Return100Nested {
+    /*@ ensures \result == 100; */
+    public static int return100 () {
+        int res = 0;
+        for(int i = 0; i < 10; i++) {
+            __Loop_Invariant_Dummy1(res, i);
+            for(int j = 0; j < 10; j++) {
+                __Loop_Invariant_Dummy2(res, i, j);
+                res = res + 1;
+            }
+        }
+        return res;
+    }
+
+    public static void __Loop_Invariant_Dummy1(int res, int i) {}
+
+    /*@ requires i >= 0; */
+    /*@ requires j >= 0; */
+    public static void __Loop_Invariant_Dummy2(int res, int i, int j) {}
+
+    /*@ requires args != null; */
+    /*@ requires \typeof(args) == \type(java.lang.String[]); */
+    /*@ requires (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    /*@ ensures (args.length == 0) && ((\forall int i; (0 <= i && i <= args.length-1) ==> (args[i] != null))); */
+    public static void main(String[] args) {
+        return100();
+    }
+}

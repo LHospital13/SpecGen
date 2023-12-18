@@ -4,11 +4,12 @@ public class StrPalindrome {
    public static boolean isPalindrome(String str) {
       
       int length = str.length();
-
-      for (int i = length - 1; 0 <= i; i--) {
+      int i;
+      for (i = length - 1; 0 <= i; i--) {
          __Loop_Invariant_Dummy1(str, length, i);
          reverse = reverse + str.charAt(i);
       }
+      __Loop_Invariant_Dummy1(str, length, i);
       
       return reverse.equals(str);
    }

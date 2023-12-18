@@ -12,6 +12,7 @@ public class Inverse {
                 index = index + 1;
             }
         }
+        __Loop_Invariant_Dummy1(x, y, index);
         return true;
     }
 

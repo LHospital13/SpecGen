@@ -2,8 +2,9 @@ class FindClosestNum {
     
     public static int findClosestNumber(int[] nums) {
         int ans = Integer.MAX_VALUE;
-
-        for(int i = 0; i < nums.length; i++) {
+        int i = 0;
+        for(i = 0; i < nums.length; i++) {
+            __Loop_Invariant_Dummy1(nums, ans, i);
             int num = nums[i];
             int absNum = ((num >= 0) ? num : -num);
             int absAns = ((ans >= 0) ? ans : -ans);
@@ -11,6 +12,7 @@ class FindClosestNum {
                 ans = num;
             }
         }
+        __Loop_Invariant_Dummy1(nums, ans, i);
 
         return ans;
     }
@@ -39,4 +41,6 @@ class FindClosestNum {
         arr = new int[]{114, 512, 513, 514, 810, 927, 999, 114514};
         findClosestNumber(arr);
     }
+
+    public static void __Loop_Invariant_Dummy1(int[] nums, int ans, int i) {}
 }
