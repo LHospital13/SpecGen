@@ -19,13 +19,28 @@ def token_limit_fitter(config, token_limit=4090):
         res['messages'].insert(0, config['messages'][0])
     return res
 
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException
+
+signal.signal(signal.SIGALRM, timeout_handler)
+
 def validate_openjml(code_with_spec, classname):
     tmp_filename = os.path.abspath(".") + "/tmp/{filename}.java".format(filename=classname)
     tmp_file = open(tmp_filename, 'w')
     tmp_file.write(code_with_spec)
     tmp_file.close()
     cmd = os.path.abspath(".") + "/openjml/openjml --esc --esc-max-warnings 1 --arithmetic-failure=quiet --nonnull-by-default --quiet -nowarn --prover=cvc4 " + tmp_filename
-    res_lines = os.popen(cmd).readlines()
+    TIMEOUT = 900 # seconds
+    signal.alarm(TIMEOUT)
+    try:        
+        res_lines = os.popen(cmd).readlines()
+        signal.alarm(0)
+    except TimeoutException:
+        print("OpenJML not responding. Aborted.")
+        sys.exit(-1)
     res = ""
     for line in res_lines:
         res = res + line
