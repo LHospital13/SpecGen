@@ -2,6 +2,7 @@ import argparse
 import os
 import openai
 import time
+import signal
 
 from util.chatgpt_wrapper import request_chatgpt_engine, create_chatgpt_config
 from util.prompt_format import FORMAT_INIT_PROMPT, FORMAT_REFINE_PROMPT
