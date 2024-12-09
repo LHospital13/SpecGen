@@ -4,7 +4,7 @@ A JML specification generation tool based on Large Language Model for Java progr
 
 
 
-## Perquisites
+## Prerequisites
 
 ### OpenJML
 
